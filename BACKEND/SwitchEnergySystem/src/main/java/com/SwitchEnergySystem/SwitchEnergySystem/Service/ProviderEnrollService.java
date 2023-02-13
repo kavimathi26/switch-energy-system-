@@ -1,0 +1,33 @@
+package com.SwitchEnergySystem.SwitchEnergySystem.Service;
+
+import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.Provider;
+import com.SwitchEnergySystem.SwitchEnergySystem.Repository.ProviderEnrollRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ProviderEnrollService {
+    @Autowired
+    ProviderEnrollRepository providerEnrollRepository;
+    public void enrollProvider(Provider provider) {
+        providerEnrollRepository.enrollProvider(provider);
+    }
+
+    public List<Provider> viewProviders() {
+       return providerEnrollRepository.viewProviders();
+    }
+
+    public Provider visibiltyUpdate(String visibility,String providerId) {
+       return providerEnrollRepository.visibiltyUpdate(visibility,providerId);
+    }
+
+    public Provider getoneprovider(String providerId) {
+        return providerEnrollRepository.getOneProvider(providerId);
+    }
+
+    public List<Provider> getTopProviders(int page, int size) {
+        return providerEnrollRepository.getTopProviders(page,size);
+    }
+}
