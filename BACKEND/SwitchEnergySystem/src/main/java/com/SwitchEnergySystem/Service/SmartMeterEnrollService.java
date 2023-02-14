@@ -11,9 +11,9 @@ import java.util.List;
 public class SmartMeterEnrollService {
     @Autowired
     SmartMeterEnrollRepository smartMeterEnrollRepository;
-    public void enrollSmartMeter(SmartMeter smartMeter) {
-    smartMeterEnrollRepository.enrollSmartMeter(smartMeter);
-    }
+//    public void enrollSmartMeter(SmartMeter smartMeter) {
+//    smartMeterEnrollRepository.enrollSmartMeter(smartMeter);
+//    }
 
     public SmartMeter approvalstatus(String approvalStatus,String smartMeterId) {
         return smartMeterEnrollRepository.approvalstatus(approvalStatus,smartMeterId);

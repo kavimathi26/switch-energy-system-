@@ -9,14 +9,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @Document(collection = "SmartMeter")
 public class SmartMeter {
-    public SmartMeter() {
-        providerId = "";
-        approvalStatus = "pending";
-        totalReadings = 0.0;
-    }
     @Id
     private String smartMeterId;
     private String providerId;
     private String approvalStatus;
     private double totalReadings;
+    private double amountToBePaid;
+    
+    public SmartMeter() {
+        providerId = "DrEvil101";
+        approvalStatus = "pending";
+        totalReadings = 0.0;
+        amountToBePaid = 0.0;
+    }
 }

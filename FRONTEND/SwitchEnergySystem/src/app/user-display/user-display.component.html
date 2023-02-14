@@ -1,0 +1,31 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+<div class="container">
+    <h2 class="center">USER DETAILS</h2>
+    <br>
+    <br>
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Smart Meter ID</th>
+                    <th>Total Readings</th>
+                    <th>Amount To Be Paid</th>
+                    <th>Energy Provider</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let smartMeter of smartMeters">
+                    <td>{{ smartMeter.smartMeterId }}</td>
+                    <td>{{ smartMeter.totalReadings }}</td>
+                    <td>{{ smartMeter.amountToBePaid }}</td>
+                    <!-- {{ViewReadingsAndAmountToBePaid("User102",smartMeter.smartMeterId)}} -->
+                    <td>{{ smartMeter.providerId }}</td>                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- <div class="pagination justify-content-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div> -->

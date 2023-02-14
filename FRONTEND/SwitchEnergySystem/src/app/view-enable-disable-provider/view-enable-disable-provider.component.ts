@@ -36,7 +36,13 @@ page: number = 0;
       console.log(response);
     })
     // this.backToMainPage();
-    window.location.reload();
+    // window.location.reload();
+  }
+  viewSmartMeters(providerId:String|null) {
+this.service.viewSmartMeters(providerId).subscribe(respronse => {
+  console.log(respronse);
+  
+})
   }
   backToMainPage() {
     const tempRouter = this.router;

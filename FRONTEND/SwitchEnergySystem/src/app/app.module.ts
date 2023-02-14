@@ -11,12 +11,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { ViewEnableDisableProviderComponent } from './view-enable-disable-provider/view-enable-disable-provider.component';
 import { AcceptRejectSmartmeterComponent } from './accept-reject-smartmeter/accept-reject-smartmeter.component';
+import { UserDisplayComponent } from './user-display/user-display.component';
 @NgModule({
   declarations: [
     AppComponent,
     EnrollProviderComponent,
     ViewEnableDisableProviderComponent,
-    AcceptRejectSmartmeterComponent
+    AcceptRejectSmartmeterComponent,
+    UserDisplayComponent
   ],
   imports: [
     BrowserModule,
