@@ -1,4 +1,4 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Repository;
+package com.SwitchEnergySystem.Repository;
 
 import org.springframework.stereotype.Repository;
 

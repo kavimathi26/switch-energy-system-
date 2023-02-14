@@ -1,7 +1,7 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Controller;
+package com.SwitchEnergySystem.Controller;
 
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.Provider;
-import com.SwitchEnergySystem.SwitchEnergySystem.Service.ProviderEnrollService;
+import com.SwitchEnergySystem.Pojo.Provider;
+import com.SwitchEnergySystem.Service.ProviderEnrollService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

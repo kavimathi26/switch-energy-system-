@@ -1,4 +1,4 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Pojo;
+package com.SwitchEnergySystem.Pojo;
 
 import lombok.Getter;
 import lombok.Setter;

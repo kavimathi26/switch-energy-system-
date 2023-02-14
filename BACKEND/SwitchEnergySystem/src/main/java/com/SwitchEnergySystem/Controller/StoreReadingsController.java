@@ -1,4 +1,4 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Controller;
+package com.SwitchEnergySystem.Controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

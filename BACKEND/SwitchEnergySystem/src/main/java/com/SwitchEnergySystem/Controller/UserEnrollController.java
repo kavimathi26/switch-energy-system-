@@ -1,8 +1,9 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Controller;
+package com.SwitchEnergySystem.Controller;
 
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.SmartMeter;
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.User;
-import com.SwitchEnergySystem.SwitchEnergySystem.Service.UserEnrollService;
+
+import com.SwitchEnergySystem.Pojo.SmartMeter;
+import com.SwitchEnergySystem.Pojo.User;
+import com.SwitchEnergySystem.Service.UserEnrollService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,15 +20,16 @@ public class UserEnrollController {
         return userEnrollService.viewAllUsers();
     }
     @PostMapping("/enroll")
-    public List<SmartMeter> enrollUser(@RequestBody User user) {
-       return userEnrollService.enrollUser(user);
+    public void enrollUser(@RequestBody User user) {
+       userEnrollService.enrollUser(user);
 //        return "User Enrolled";
     }
     @GetMapping("/viewoneuser/userId/{userId}")
     public List<User> viewoneuser(@PathVariable String userId) {
         return userEnrollService.viewoneuser(userId);
     }
-    @GetMapping("/view/userId/{userId}/id/{smartMeterId}")
+    @GetMapping("/view/userId/{userId}/smartMeterId/{smartMeterId}")
+//    http://localhost:8080/user/view/userId/${userId}/smartMeter/${smartMeterId}
     public List viewParticularSmartMeterForAUser(@PathVariable String smartMeterId) {
         return userEnrollService.viewParticularSmartMeterForAUser(smartMeterId);
     }

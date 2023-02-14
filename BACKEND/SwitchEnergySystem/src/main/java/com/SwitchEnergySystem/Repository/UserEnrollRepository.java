@@ -1,8 +1,7 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Repository;
+package com.SwitchEnergySystem.Repository;
 
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.Provider;
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.SmartMeter;
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.User;
+import com.SwitchEnergySystem.Pojo.SmartMeter;
+import com.SwitchEnergySystem.Pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -21,14 +20,10 @@ public class UserEnrollRepository {
         return mongoTemplate.findAll(User.class);
     }
 
-    public List<SmartMeter> enrollUser(User user) {
-        String smartMeterId = (String) user.getSmartMeterId();
-        System.out.println("smartMeterId "+smartMeterId);
-//        System.out.println(smartMeterId.getClass().getName());
-        smartMeterEnrollRepository.setSmartMeter(smartMeterId);
-        smartMeterEnrollRepository.getSmartMeter(smartMeterId);
+    public void enrollUser(User user) {
         mongoTemplate.save(user);
-        return smartMeterEnrollRepository.getSmartMeter(smartMeterId);
+        System.out.println("id "+user.getSmartMeterId());
+        smartMeterEnrollRepository.setSmartMeter(user.getSmartMeterId());
     }
 
     public List<User> viewoneuser(String userId) {
@@ -36,8 +31,8 @@ public class UserEnrollRepository {
         System.out.println(mongoTemplate.find(query,User.class));
         return mongoTemplate.find(query,User.class);
     }
-    public List viewParticularSmartMeterForAUser(String id) {
-        Query query = new Query().addCriteria(Criteria.where("_id").is(id));
+    public List viewParticularSmartMeterForAUser(String smartMeterId) {
+        Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));
         System.out.println(mongoTemplate.find(query,SmartMeter.class));
         return mongoTemplate.find(query,SmartMeter.class);
     }

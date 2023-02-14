@@ -1,8 +1,8 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Service;
+package com.SwitchEnergySystem.Service;
 
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.SmartMeter;
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.User;
-import com.SwitchEnergySystem.SwitchEnergySystem.Repository.UserEnrollRepository;
+import com.SwitchEnergySystem.Pojo.SmartMeter;
+import com.SwitchEnergySystem.Pojo.User;
+import com.SwitchEnergySystem.Repository.UserEnrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +16,8 @@ public class UserEnrollService {
        return userEnrollRepository.viewAllUsers();
     }
 
-    public List<SmartMeter> enrollUser(User user) {
-       return userEnrollRepository.enrollUser(user);
+    public void enrollUser(User user) {
+       userEnrollRepository.enrollUser(user);
     }
 
     public List<User> viewoneuser(String userId) {

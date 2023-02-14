@@ -1,4 +1,4 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Service;
+package com.SwitchEnergySystem.Service;
 
 import org.springframework.stereotype.Service;
 

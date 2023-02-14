@@ -1,7 +1,7 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Service;
+package com.SwitchEnergySystem.Service;
 
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.Provider;
-import com.SwitchEnergySystem.SwitchEnergySystem.Repository.ProviderEnrollRepository;
+import com.SwitchEnergySystem.Pojo.Provider;
+import com.SwitchEnergySystem.Repository.ProviderEnrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

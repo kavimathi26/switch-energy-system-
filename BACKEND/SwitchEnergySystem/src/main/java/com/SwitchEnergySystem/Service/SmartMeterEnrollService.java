@@ -1,7 +1,7 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Service;
+package com.SwitchEnergySystem.Service;
 
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.SmartMeter;
-import com.SwitchEnergySystem.SwitchEnergySystem.Repository.SmartMeterEnrollRepository;
+import com.SwitchEnergySystem.Pojo.SmartMeter;
+import com.SwitchEnergySystem.Repository.SmartMeterEnrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class SmartMeterEnrollService {
 //    smartMeterEnrollRepository.enrollSmartMeter(smartMeter);
 //    }
 
-    public SmartMeter approvalstatus(String approvalStatus,String smartMeterId) {
+    public SmartMeter approvalstatus(String approvalStatus, String smartMeterId) {
         return smartMeterEnrollRepository.approvalstatus(approvalStatus,smartMeterId);
     }
 

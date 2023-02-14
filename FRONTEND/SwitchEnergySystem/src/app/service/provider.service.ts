@@ -29,10 +29,10 @@ export class Provider {
     viewSmartMeters(providerId:String|null):Observable<any> {
         return this.http.get(`${this.smartMeterURL}providerId/${providerId}`)
     }
-    viewOneUser(userId:String|null):Observable<user[]>{
+    viewOneUser(userId:string):Observable<user[]>{
         return this.http.get<user[]>(`${this.userURL}viewoneuser/userId/${userId}`)
     }
-    ViewReadingsAndAmountToBePaid(userId:String|null,smartMeterId:String|null):Observable<any> {
-        return this.http.get<any>(`${this.userURL}view/userId/${userId}/smartMeter/${smartMeterId}`)
+    ViewReadingsAndAmountToBePaid(userId:string|null,smartMeterId:String|null):Observable<any> {
+        return this.http.get<any>(`${this.userURL}view/userId/${userId}/smartMeterId/${smartMeterId}`)
     }
 }

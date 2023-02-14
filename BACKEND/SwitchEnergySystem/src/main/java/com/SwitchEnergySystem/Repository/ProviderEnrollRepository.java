@@ -1,6 +1,6 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Repository;
+package com.SwitchEnergySystem.Repository;
 
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.Provider;
+import com.SwitchEnergySystem.Pojo.Provider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;

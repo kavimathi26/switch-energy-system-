@@ -1,6 +1,7 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Repository;
+package com.SwitchEnergySystem.Repository;
 
-import com.SwitchEnergySystem.SwitchEnergySystem.Pojo.SmartMeter;
+
+import com.SwitchEnergySystem.Pojo.SmartMeter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -16,10 +17,13 @@ public class SmartMeterEnrollRepository {
     @Autowired
     MongoTemplate mongoTemplate;
     public void setSmartMeter(String smartMeterId) {
-        SmartMeter smartMeter = new SmartMeter();
+
+        SmartMeter smartMeter = new SmartMeter(smartMeterId);
         smartMeter.setSmartMeterId(smartMeterId);
         System.out.println("setSmartMeter");
         mongoTemplate.save(smartMeter);
+        System.out.println(smartMeter);
+
     }
     public List getSmartMeter(String smartMeterId) {
         Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));

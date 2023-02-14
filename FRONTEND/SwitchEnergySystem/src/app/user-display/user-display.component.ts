@@ -8,23 +8,42 @@ import { user } from './user';
   styleUrls: ['./user-display.component.css']
 })
 export class UserDisplayComponent implements OnInit {
-  smartMeters:user[]=[];
-  s =[];
-  constructor(private service: Provider) { 
-    this.service.viewOneUser("User101").subscribe((res) => {
-      this.smartMeters = res;
+  // smartMeters:user[]=[];
+smartMeters:Array<user>=[];
+  userId="";
+  smartMeterId ="";
+  totalReadings="";
+  amountToBePaid="";
+  providerId="";
+  constructor(private service: Provider) {
+    this.service.viewOneUser("Arulsaru").subscribe((res) => {
+      console.log(res);
+      this.userId=res[0].userId;
+      this.smartMeterId=res[0].smartMeterId;
+      this.ViewReadingsAndAmountToBePaid();
+      this.providerId=res[0].providerId;
+      // this.smartMeters.push({"userId":this.userId,"smartMeterId":this.smartMeterId,"totalReadings":this.totalReadings,"amountToBePaid":this.amountToBePaid,"providerId":this.providerId});
+      // console.log(this.userId);
       console.log(this.smartMeters);
-    })
     this.ViewReadingsAndAmountToBePaid();
+      
+      
+    })
   }
-  ViewReadingsAndAmountToBePaid(){
-  this.service.ViewReadingsAndAmountToBePaid("User101","63ea6491f0a49d592f59a7ab").subscribe((res=> {
-    console.log(res);
-    // this.smartMeters=res;
-    // console.log(this.smartMeters);
-    
-  }))
+  ViewReadingsAndAmountToBePaid() {
+    this.service.ViewReadingsAndAmountToBePaid("Arulsaru", "63eb7e14cf20751556dd50bc").subscribe((res1 => {
+      console.log(res1);
+      this.totalReadings=res1[0].totalReadings;
+      this.amountToBePaid=res1[0].amountToBePaid;
+      // this.smartMeters=res;
+      console.log(this.smartMeters);
+      this.smartMeters.push({"userId":this.userId,"smartMeterId":this.smartMeterId,"totalReadings":this.totalReadings,"amountToBePaid":this.amountToBePaid,"providerId":this.providerId});
+
+    }))
   }
-  ngOnInit(): void {  }
+  
+  ngOnInit(): void {
+
+  }
 
 }

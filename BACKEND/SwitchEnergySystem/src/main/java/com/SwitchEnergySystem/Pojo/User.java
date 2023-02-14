@@ -1,4 +1,4 @@
-package com.SwitchEnergySystem.SwitchEnergySystem.Pojo;
+package com.SwitchEnergySystem.Pojo;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,13 +14,13 @@ public class User {
         password = "";
         role = "";
         providerId = "DrEvil101";
-        smartMeterId ="";
+//        smartMeterId ="";
     }
 
     private String userId;//for user random id will be generated. for admin we need to give id
     private String password;
     private String role;
-//    @Id
+    @Id
     private String smartMeterId;
     private String providerId;
 
