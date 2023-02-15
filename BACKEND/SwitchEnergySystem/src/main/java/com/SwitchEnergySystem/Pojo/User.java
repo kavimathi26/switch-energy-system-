@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @Document(collection = "User")
 public class User {
-    User() {
-        userId="";
+   public User(String userId) {
+        this.userId=userId;
         password = "";
         role = "";
         providerId = "DrEvil101";

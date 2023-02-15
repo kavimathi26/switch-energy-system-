@@ -30,4 +30,8 @@ public class ProviderEnrollService {
     public List<Provider> getTopProviders(int page, int size) {
         return providerEnrollRepository.getTopProviders(page,size);
     }
+
+    public List viewProviderIds() {
+        return providerEnrollRepository.viewProviderIds();
+    }
 }

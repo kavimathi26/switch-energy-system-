@@ -40,4 +40,13 @@ public class ProviderEnrollRepository {
             query.skip(page*size).limit(size);
             return mongoTemplate.find(query,Provider.class);
         }
+
+    public List viewProviderIds() {
+        Query query = new Query();
+        query.fields()
+                .exclude("providerName","countOfSmartMeters","amountChargedPerUnit","visibility");
+//                .include("providerId")
+//                .include("status");
+       return mongoTemplate.find(query,Provider.class);
+    }
 }

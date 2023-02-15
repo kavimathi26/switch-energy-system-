@@ -33,4 +33,16 @@ public class UserEnrollController {
     public List viewParticularSmartMeterForAUser(@PathVariable String smartMeterId) {
         return userEnrollService.viewParticularSmartMeterForAUser(smartMeterId);
     }
+    @PutMapping("/smartmeterid/{smartMeterId}/providerid/{providerId}/userId/{userId}")
+    public void updateProivder(@PathVariable String smartMeterId,@PathVariable String providerId,@PathVariable String userId) {
+       userEnrollService.updateProivder(smartMeterId,providerId,userId);
+    }
+    @PostMapping("/userId/{userId}")
+    public void createUser(@PathVariable String userId) {
+        userEnrollService.createUser(userId);
+    }
+    @GetMapping("/userId/{userId}")
+    public int countUser(@PathVariable String userId) {
+       return  userEnrollService.countUser(userId);
+    }
 }

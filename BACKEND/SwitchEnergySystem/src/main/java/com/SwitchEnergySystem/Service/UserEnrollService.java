@@ -1,6 +1,5 @@
 package com.SwitchEnergySystem.Service;
 
-import com.SwitchEnergySystem.Pojo.SmartMeter;
 import com.SwitchEnergySystem.Pojo.User;
 import com.SwitchEnergySystem.Repository.UserEnrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +25,17 @@ public class UserEnrollService {
 
     public List viewParticularSmartMeterForAUser(String smartMeterId) {
         return userEnrollRepository.viewParticularSmartMeterForAUser(smartMeterId);
+    }
+
+    public void updateProivder(String smartMeterId, String providerId, String userId) {
+        userEnrollRepository.updateProivder(smartMeterId,providerId,userId);
+    }
+
+    public void createUser(String userId) {
+        userEnrollRepository.createUser(userId);
+    }
+
+    public int countUser(String userId) {
+       return userEnrollRepository.getUserCount(userId);
     }
 }

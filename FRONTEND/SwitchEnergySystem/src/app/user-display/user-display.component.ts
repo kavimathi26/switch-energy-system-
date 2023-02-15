@@ -9,39 +9,70 @@ import { user } from './user';
 })
 export class UserDisplayComponent implements OnInit {
   // smartMeters:user[]=[];
-smartMeters:Array<user>=[];
-  userId="";
-  smartMeterId ="";
-  totalReadings="";
-  amountToBePaid="";
-  providerId="";
+  smartMeters: Array<user> = [];
+  final: Array<user> = [];
+  userId = "Kavi123";
+  smartMeterId = "";
+  totalReadings: number = 0;
+  amountToBePaid = "";
+  providerId = "";
+  userCount = this.getUserCount();
+
   constructor(private service: Provider) {
-    this.service.viewOneUser("Arulsaru").subscribe((res) => {
+  }
+  getUserCount() {
+    this.service.getUserCount("Kavi123").subscribe((res) => {
       console.log(res);
-      this.userId=res[0].userId;
-      this.smartMeterId=res[0].smartMeterId;
-      this.ViewReadingsAndAmountToBePaid();
-      this.providerId=res[0].providerId;
-      // this.smartMeters.push({"userId":this.userId,"smartMeterId":this.smartMeterId,"totalReadings":this.totalReadings,"amountToBePaid":this.amountToBePaid,"providerId":this.providerId});
-      // console.log(this.userId);
-      console.log(this.smartMeters);
-    this.ViewReadingsAndAmountToBePaid();
-      
+      console.log(typeof(res));
       
     })
   }
-  ViewReadingsAndAmountToBePaid() {
-    this.service.ViewReadingsAndAmountToBePaid("Arulsaru", "63eb7e14cf20751556dd50bc").subscribe((res1 => {
+  i = 0;
+  ViewReadingsAndAmountToBePaid(userId: string, smartMeterId: String) {
+    this.service.ViewReadingsAndAmountToBePaid(userId, smartMeterId).subscribe((res1 => {
       console.log(res1);
-      this.totalReadings=res1[0].totalReadings;
-      this.amountToBePaid=res1[0].amountToBePaid;
-      // this.smartMeters=res;
-      console.log(this.smartMeters);
-      this.smartMeters.push({"userId":this.userId,"smartMeterId":this.smartMeterId,"totalReadings":this.totalReadings,"amountToBePaid":this.amountToBePaid,"providerId":this.providerId});
-
+      this.totalReadings = res1[0].totalReadings;
+      this.amountToBePaid = res1[0].amountToBePaid;
+      this.smartMeters.push({ "userId": this.userId, "smartMeterId": this.smartMeterId, "totalReadings": this.totalReadings, "amountToBePaid": this.amountToBePaid, "providerId": this.providerId });
+      this.final.push(this.smartMeters[0]);
     }))
+    this.i += 1;
   }
-  
+
+  viewOneUser() {
+    this.service.viewOneUser("Kavi123").subscribe((res) => {
+      while (this.i < res.length) {
+        // console.log(typeof(res.length));
+        
+        console.log(res[this.i]);
+
+        this.userId = res[this.i].userId;
+        this.smartMeterId = res[this.i].smartMeterId;
+        this.providerId = res[this.i].providerId;
+        this.ViewReadingsAndAmountToBePaid(res[this.i].userId, res[this.i].smartMeterId);
+        console.log(res[this.i].userId, res[this.i].smartMeterId);
+        if (this.i == res.length) {
+          break;
+        }
+      }
+    })
+  }
+
+  viewAllProviders() {
+    this.service.ViewAllProviders().subscribe((res) => {
+    })
+  }
+
+  createSmartMeter() {
+    this.viewOneUser();
+    this.viewAllProviders();
+    console.log(this.final);
+    console.log(this.smartMeters);
+
+    // this.service.createSmartMeter(this.userId).subscribe((res) => {
+    // })
+
+  }
   ngOnInit(): void {
 
   }

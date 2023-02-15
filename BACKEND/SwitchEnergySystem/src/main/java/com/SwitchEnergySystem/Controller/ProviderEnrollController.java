@@ -18,6 +18,10 @@ public class ProviderEnrollController {
     public List<Provider> viewProviders() {
         return providerEnrollService.viewProviders();
     }
+    @GetMapping("/viewproviderids")
+    public  List viewProviderIds() {
+        return providerEnrollService.viewProviderIds();
+    }
     @PostMapping("/enroll")
     public String enrollProvider(@RequestBody Provider provider) {
         providerEnrollService.enrollProvider(provider);

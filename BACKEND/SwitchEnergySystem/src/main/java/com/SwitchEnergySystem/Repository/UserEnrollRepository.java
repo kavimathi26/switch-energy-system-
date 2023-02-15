@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -35,5 +36,26 @@ public class UserEnrollRepository {
         Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));
         System.out.println(mongoTemplate.find(query,SmartMeter.class));
         return mongoTemplate.find(query,SmartMeter.class);
+    }
+
+    public void updateProivder(String smartMeterId, String providerId, String userId) {
+        Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));
+        Update update = new Update();
+        update.set("providerId",providerId);
+        mongoTemplate.findAndModify(query,update, SmartMeter.class);
+        Query query1 = new Query().addCriteria(Criteria.where("userId").is(userId));
+        update.set("providerId",providerId);
+        mongoTemplate.findAndModify(query,update, User.class);
+        }
+
+        public void createUser(String userId) {
+            User user = new User(userId);
+            mongoTemplate.save(user);
+            smartMeterEnrollRepository.setSmartMeter(user.getSmartMeterId());
+        }
+        public int getUserCount(String userId) {
+            Query query = new Query().addCriteria(Criteria.where("userId").is(userId));
+            System.out.println(mongoTemplate.find(query,User.class).size());
+       return mongoTemplate.find(query,User.class).size();
     }
 }
