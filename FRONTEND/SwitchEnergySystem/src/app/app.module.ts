@@ -12,13 +12,17 @@ import {MatInputModule} from '@angular/material/input';
 import { ViewEnableDisableProviderComponent } from './view-enable-disable-provider/view-enable-disable-provider.component';
 import { AcceptRejectSmartmeterComponent } from './accept-reject-smartmeter/accept-reject-smartmeter.component';
 import { UserDisplayComponent } from './user-display/user-display.component';
+import { ViewSmartmeterListComponent } from './view-smartmeter-list/view-smartmeter-list.component';
+import { LoginComponentComponent } from './login-component/login-component.component';
 @NgModule({
   declarations: [
     AppComponent,
     EnrollProviderComponent,
     ViewEnableDisableProviderComponent,
     AcceptRejectSmartmeterComponent,
-    UserDisplayComponent
+    UserDisplayComponent,
+    ViewSmartmeterListComponent,
+    LoginComponentComponent,
   ],
   imports: [
     BrowserModule,

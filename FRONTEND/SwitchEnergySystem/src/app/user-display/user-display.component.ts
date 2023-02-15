@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Provider } from '../service/provider.service';
 import { responseSmartMeter } from './responeSmartMeter';
-import { user } from './user';
+import { userEnrollType } from './user-enroll-type';
 
 @Component({
   selector: 'app-user-display',
@@ -10,91 +9,47 @@ import { user } from './user';
   styleUrls: ['./user-display.component.css']
 })
 export class UserDisplayComponent implements OnInit {
-  // smartMeters:user[]=[];
-  smartMeters: Array<user> = [];
-  // final: Array<user> = [];
+  smartMeters: Array<any> = [];
   resSmartMeters: Array<responseSmartMeter> = [];
   userId = "Kavi123";
   smartMeterId = "";
   totalReadings: number = 0;
   amountToBePaid = "";
   providerId = "";
-  userCount = this.getUserCount();
-
+  userEnroll: Array<userEnrollType> = [{
+    "userId": this.userId, "providerId": "DrEvil101",
+    "approvalStatus": "Pending",
+    "totalReadings": 0.0,
+    "amountToBePaid": 0.0
+  }];
   constructor(private service: Provider) {
-  }
-  getUserCount() {
-    this.service.getUserCount("Kavi123").subscribe((res) => {
-      console.log(res);
-      console.log(typeof (res));
-
-    })
-  }
-  i = 0;
-  // ViewReadingsAndAmountToBePaid(userId: string, smartMeterId: String) {
-    ViewReadingsAndAmountToBePaid() {
-
-    for (let i = 0; i < this.resSmartMeters.length; i++) {
-      this.service.ViewReadingsAndAmountToBePaid(this.resSmartMeters[i].userId, this.resSmartMeters[i].smartMeterId).subscribe((res1 => {
-
-        this.totalReadings = res1[i].totalReadings;
-        this.amountToBePaid = res1[i].amountToBePaid;
-        this.smartMeters.push({ "userId": this.userId, "smartMeterId": this.smartMeterId, "totalReadings": this.totalReadings, "amountToBePaid": this.amountToBePaid, "providerId": this.providerId });
-
-
-        // this.final.push(this.smartMeters[0]);
-      }))
-      // this.i += 1;
-    }
-    
+    this.getUserWithSamrtMeters("Kavi123");
   }
 
-  viewOneUser() {
-    this.service.viewOneUser("Kavi123").subscribe((res) => {
-      while (this.i < res.length) {        
-        console.log(res[this.i]);
+  ngOnInit(): void { }
 
-        this.userId = res[this.i].userId;
-        this.smartMeterId = res[this.i].smartMeterId;
-        this.providerId = res[this.i].providerId;
-
-          // this.ViewReadingsAndAmountToBePaid(res[this.i].userId, res[this.i].smartMeterId);
-
-        if (this.i == res.length) {
-          break;
-        }
-      }
-    })
-
-
-  }
-  // viewOneUser() {
-  //   this.service.viewOneUser("Kavi123").subscribe((res) => {
-  //     console.log(res);
-  //     this.resSmartMeters = res;
-  //     console.log(this.resSmartMeters);
-
-  //   })
-  // }
 
   viewAllProviders() {
     this.service.ViewAllProviders().subscribe((res) => {
     })
   }
+  getUserWithSamrtMeters(userId: String) {
+    this.service.getUserWithSamrtMeters(userId).subscribe((res) => {
+      this.smartMeters = res;
 
+    })
+  }
+  enrollSmartMeterForAUser() {
+    this.service.enrollSmartMeterForAUser(this.userEnroll[0]).subscribe((res)=> {
+      console.log(res);
+      
+    })
+    window.location.reload();
+  }
   createSmartMeter() {
-    this.viewOneUser();
-    this.ViewReadingsAndAmountToBePaid();
     this.viewAllProviders();
-    // console.log(this.final);
-    console.log(this.smartMeters);
-
-    // this.service.createSmartMeter(this.userId).subscribe((res) => {
-    // })
-
+    this.enrollSmartMeterForAUser();
   }
-  ngOnInit(): void {
 
-  }
 
 }

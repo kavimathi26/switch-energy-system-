@@ -1,6 +1,7 @@
 package com.SwitchEnergySystem.Repository;
 
 import com.SwitchEnergySystem.Pojo.Provider;
+import com.SwitchEnergySystem.Pojo.SmartMeter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -49,4 +50,8 @@ public class ProviderEnrollRepository {
 //                .include("status");
        return mongoTemplate.find(query,Provider.class);
     }
+//    public int getCountOfSmartMeters(String providerId) {
+//        Query query = new Query().addCriteria(Criteria.where("providerId").is(providerId));
+//        return mongoTemplate.find(query, Provider.class).size();
+//    }
 }

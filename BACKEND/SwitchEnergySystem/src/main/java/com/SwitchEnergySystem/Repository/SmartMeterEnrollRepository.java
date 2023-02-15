@@ -38,4 +38,19 @@ public class SmartMeterEnrollRepository {
         Query query = new Query().addCriteria(Criteria.where("providerId").is(providerId));
         return mongoTemplate.find(query,SmartMeter.class);
     }
+
+    public List getUserWithSmartMeters(String userId) {
+        Query query = new Query().addCriteria(Criteria.where("userId").is(userId).and("approvalStatus").is("accepted"));
+        return mongoTemplate.find(query,SmartMeter.class);
+    }
+
+    public List getUserWithSmartMetersPending(String userId) {
+        Query query = new Query().addCriteria(Criteria.where("userId").is(userId).and("approvalStatus").is("Pending"));
+        return mongoTemplate.find(query,SmartMeter.class);
+    }
+
+    public int getCountOfSmartMeters(String providerId) {
+        Query query = new Query().addCriteria(Criteria.where("providerId").is(providerId));
+        return mongoTemplate.find(query,SmartMeter.class).size();
+    }
 }

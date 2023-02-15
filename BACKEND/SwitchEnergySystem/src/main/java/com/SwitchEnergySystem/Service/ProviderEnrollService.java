@@ -34,4 +34,7 @@ public class ProviderEnrollService {
     public List viewProviderIds() {
         return providerEnrollRepository.viewProviderIds();
     }
+//    public int getCountOfSmartMeters(String providerId) {
+//        return providerEnrollRepository.getCountOfSmartMeters(providerId);
+//    }
 }

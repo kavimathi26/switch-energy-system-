@@ -49,5 +49,9 @@ public class ProviderEnrollController {
 
         return providerEnrollService.getTopProviders(pageNo, limit);
     }
-
+//    @GetMapping("/count/providerId/{providerId}")
+//    public int getCountOfSmartMeters(@PathVariable String providerId) {
+//        return providerEnrollService.getCountOfSmartMeters(providerId);
+//
+//    }
 }

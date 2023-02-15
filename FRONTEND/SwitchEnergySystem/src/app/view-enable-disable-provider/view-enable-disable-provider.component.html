@@ -24,8 +24,8 @@
                     <td>{{ provider.providerName }}</td>
                     <td>{{ provider.countOfSmartMeters }}</td>
                     <td>
-                        <button type="button" class="btn btn-success"
-                            (click)="viewSmartMeters(provider.providerId)">view list</button>
+                        <button type="button" class="btn btn-success" (click)="viewSmartMeters(provider.providerId)"
+                            routerLink="/view/smartmeters">view list</button>
                     </td>
                     <td>{{ provider.amountChargedPerUnit }}</td>
 
@@ -33,7 +33,7 @@
                         <button type="button" class="btn btn-info"
                             (click)="editVisibility(provider.visibility,provider.providerId)">{{provider.visibility}}</button>
                     </td>
-                    
+
                 </tr>
             </tbody>
         </table>

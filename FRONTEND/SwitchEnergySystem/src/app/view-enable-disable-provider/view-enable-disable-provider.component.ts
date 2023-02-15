@@ -42,6 +42,12 @@ export class ViewEnableDisableProviderComponent implements OnInit {
 
     })
   }
+  getCountOfSmartMeters(providerId:String|null) {
+    this.service.getCountOfSmartMeters(providerId).subscribe(Response=> {
+      console.log(Response);
+      
+    })
+  }
   backToMainPage() {
     const tempRouter = this.router;
     tempRouter.navigate(['providers/view']);

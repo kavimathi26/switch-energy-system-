@@ -26,4 +26,23 @@ public String enrollSmartMeter(@RequestBody SmartMeter smartMeter) {
     public List viewListOfSmartMetersForAParticularProviderId(@PathVariable String providerId) {
     return smartMeterEnrollService.viewListOfSmartMetersForAParticularProviderId(providerId);
 }
+
+@GetMapping("/userId/{userId}")
+    public List getUserWithSmartMeters(@PathVariable String userId) {
+    return smartMeterEnrollService.getUserWithSmartMeters(userId);
+}
+@PutMapping("/approve/{smartMeterId}")
+    public void approveSmartMeter(@PathVariable String smartMeterId) {
+    smartMeterEnrollService.approveSmartMeter(smartMeterId);
+}
+@GetMapping("/pending/userId/{userId}")
+    public List getUserWithSmartMetersPending(@PathVariable String userId) {
+    return smartMeterEnrollService.getUserWithSmartMetersPending(userId);
+}
+@GetMapping("/count/providerId/{providerId}")
+    public int getCountOfSmartMeters(@PathVariable String providerId) {
+    return smartMeterEnrollService.getCountOfSmartMeters(providerId);
+
+}
+//@PutMapping("/pending/")
 }

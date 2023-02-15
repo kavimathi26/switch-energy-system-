@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { provider } from "../enroll-provider/provider";
 import { user } from "../user-display/user";
 import { smartMeter } from "../user-display/smartMeter";
+import { userEnrollType } from "../user-display/user-enroll-type";
 
 @Injectable({
     providedIn: 'root'
@@ -29,12 +30,6 @@ export class Provider {
     viewSmartMeters(providerId:String|null):Observable<any> {
         return this.http.get(`${this.smartMeterURL}providerId/${providerId}`)
     }
-    viewOneUser(userId:string):Observable<any>{
-        return this.http.get<any>(`${this.userURL}viewoneuser/userId/${userId}`)
-    }
-    ViewReadingsAndAmountToBePaid(userId:string|null,smartMeterId:String|null):Observable<any> {
-        return this.http.get<any>(`${this.userURL}view/userId/${userId}/smartMeterId/${smartMeterId}`)
-    }
     ViewAllProviders():Observable<any> {
         return this.http.get(`${this.baseURL}viewproviders`)
     }
@@ -46,5 +41,20 @@ export class Provider {
     }
     getUserCount(userId:String):Observable<Object> {
         return this.http.get(`${this.userURL}userId/${userId}`)
+    }
+    getUserWithSamrtMeters(userId:String):Observable<any> {
+        return this.http.get(`${this.smartMeterURL}userId/${userId}`)
+    }
+    enrollSmartMeterForAUser(NewuserEnrollType:userEnrollType):Observable<Object> {
+        return this.http.post(`${this.smartMeterURL}enroll`,NewuserEnrollType);
+    }
+    getUserWithSmartMetersPending(userId:String): Observable<any>{
+        return this.http.get(`${this.smartMeterURL}pending/userId/${userId}`)
+    }
+    approveSmartMeter(approvalStatus:String,smartMeterId:String): Observable<any>{
+        return this.http.put(`${this.smartMeterURL}approvalstatus/${approvalStatus}/smartmeterid/${smartMeterId}`,smartMeterId);
+    }
+    getCountOfSmartMeters(providerId:String|null) {
+        return this.http.get(`${this.smartMeterURL}count/providerId/${providerId}`)
     }
 }
