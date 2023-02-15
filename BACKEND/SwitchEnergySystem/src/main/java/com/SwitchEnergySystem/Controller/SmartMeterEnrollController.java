@@ -44,5 +44,8 @@ public String enrollSmartMeter(@RequestBody SmartMeter smartMeter) {
     return smartMeterEnrollService.getCountOfSmartMeters(providerId);
 
 }
-//@PutMapping("/pending/")
+@PutMapping("/update/smartMeterId/{smartMeterId}/providerIdToBeChanged/{providerIdToBeChanged}")
+    public void updateProviderId(@PathVariable String smartMeterId,@PathVariable String providerIdToBeChanged) {
+    smartMeterEnrollService.updateProviderId(smartMeterId,providerIdToBeChanged);
+}
 }

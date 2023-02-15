@@ -37,4 +37,8 @@ public class SmartMeterEnrollService {
     public int getCountOfSmartMeters(String providerId) {
     return smartMeterEnrollRepository.getCountOfSmartMeters(providerId);
     }
+
+    public void updateProviderId(String providerId, String providerIdToBeChanged) {
+        smartMeterEnrollRepository.updateProviderId(providerId,providerIdToBeChanged);
+    }
 }
