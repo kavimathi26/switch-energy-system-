@@ -9,18 +9,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @Document(collection = "SmartMeter")
 public class SmartMeter {
-//    @Id
+    private String userId;
+    @Id
     private String smartMeterId;
     private String providerId;
     private String approvalStatus;
     private double totalReadings;
     private double amountToBePaid;
     
-    public SmartMeter(String smartMeterId) {
+    public SmartMeter() {
+        userId="";
         providerId = "DrEvil101";
         approvalStatus = "pending";
         totalReadings = 0.0;
         amountToBePaid = 0.0;
-        smartMeterId = this.smartMeterId;
     }
 }

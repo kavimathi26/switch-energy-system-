@@ -2,6 +2,7 @@ package com.SwitchEnergySystem.Repository;
 
 import com.SwitchEnergySystem.Pojo.SmartMeter;
 import com.SwitchEnergySystem.Pojo.User;
+import com.SwitchEnergySystem.Pojo.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -22,14 +23,22 @@ public class UserEnrollRepository {
     }
 
     public void enrollUser(User user) {
+//        UserDetails userDetails = new UserDetails();
+//        userDetails.setUserId(user.getUserId());
+//        userDetails.setSmartMeterId(user.getSmartMeterId());
+//        userDetails.setEnergyProvider(user.getProviderId());
+//        Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(user.getSmartMeterId()));
+//        System.out.println(query);
+//        mongoTemplate.save(userDetails);
+//        userDetails.setTotalReadings();
         mongoTemplate.save(user);
-        System.out.println("id "+user.getSmartMeterId());
-        smartMeterEnrollRepository.setSmartMeter(user.getSmartMeterId());
+//        System.out.println("id "+user.getSmartMeterId());
+//        smartMeterEnrollRepository.setSmartMeter(user.getSmartMeterId());
     }
 
     public List<User> viewoneuser(String userId) {
         Query query = new Query().addCriteria(Criteria.where("userId").is(userId));
-        System.out.println(mongoTemplate.find(query,User.class));
+//        System.out.println(mongoTemplate.find(query,User.class));
         return mongoTemplate.find(query,User.class);
     }
     public List viewParticularSmartMeterForAUser(String smartMeterId) {
@@ -51,7 +60,7 @@ public class UserEnrollRepository {
         public void createUser(String userId) {
             User user = new User(userId);
             mongoTemplate.save(user);
-            smartMeterEnrollRepository.setSmartMeter(user.getSmartMeterId());
+//            smartMeterEnrollRepository.setSmartMeter(user.getSmartMeterId());
         }
         public int getUserCount(String userId) {
             Query query = new Query().addCriteria(Criteria.where("userId").is(userId));

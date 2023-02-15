@@ -16,23 +16,15 @@ import java.util.List;
 public class SmartMeterEnrollRepository {
     @Autowired
     MongoTemplate mongoTemplate;
-    public void setSmartMeter(String smartMeterId) {
 
-        SmartMeter smartMeter = new SmartMeter(smartMeterId);
-        smartMeter.setSmartMeterId(smartMeterId);
-        System.out.println("setSmartMeter");
-        mongoTemplate.save(smartMeter);
-        System.out.println(smartMeter);
-
-    }
     public List getSmartMeter(String smartMeterId) {
         Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));
         System.out.println("getSmartMeter");
         return mongoTemplate.find(query,SmartMeter.class);
     }
-//    public void enrollSmartMeter(SmartMeter smartMeter) {
-//        mongoTemplate.save(smartMeter);
-//    }
+    public void enrollSmartMeter(SmartMeter smartMeter) {
+        mongoTemplate.save(smartMeter);
+    }
 
     public SmartMeter approvalstatus(String approvalStatus,String smartMeterId) {
         Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));

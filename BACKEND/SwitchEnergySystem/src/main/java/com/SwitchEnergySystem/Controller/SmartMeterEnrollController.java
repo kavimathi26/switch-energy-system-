@@ -12,11 +12,11 @@ import java.util.List;
 public class SmartMeterEnrollController {
 @Autowired
 SmartMeterEnrollService smartMeterEnrollService;
-//@PostMapping("/enroll")
-//public String enrollSmartMeter(@RequestBody SmartMeter smartMeter) {
-//    smartMeterEnrollService.enrollSmartMeter(smartMeter);
-//    return "Smart Meter enrolled";
-//}
+@PostMapping("/enroll")
+public String enrollSmartMeter(@RequestBody SmartMeter smartMeter) {
+    smartMeterEnrollService.enrollSmartMeter(smartMeter);
+    return "Smart Meter enrolled";
+}
 @PutMapping("/approvalstatus/{approvalStatus}/smartmeterid/{smartMeterId}")
     public SmartMeter approvalStatus(@PathVariable String approvalStatus, @PathVariable String smartMeterId) {
     return smartMeterEnrollService.approvalstatus(approvalStatus,smartMeterId);
