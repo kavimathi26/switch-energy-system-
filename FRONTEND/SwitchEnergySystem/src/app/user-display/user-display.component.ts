@@ -11,6 +11,7 @@ import { userEnrollType } from './user-enroll-type';
 export class UserDisplayComponent implements OnInit {
   smartMeters: Array<any> = [];
   resSmartMeters: Array<responseSmartMeter> = [];
+  providersArray: Array<any>=[];
   userId = "Kavi123";
   smartMeterId = "";
   totalReadings: number = 0;
@@ -26,15 +27,27 @@ export class UserDisplayComponent implements OnInit {
     this.getUserWithSamrtMeters("Kavi123");
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.viewAllProviders() }
 
-switchProviders(providerId:String) {
+switchProviders(smartMeterId:String,providerId:String) {
+console.log(providerId);
+console.log(smartMeterId);
+
+this.service.changeProviders(smartMeterId,providerId).subscribe((res)=> {
+console.log(res);
+window.location.reload();
+})
 
 }
   viewAllProviders() {
     this.service.ViewAllProviders().subscribe((res) => {
+      console.log(res);
+      this.providersArray=res;
+      
     })
   }
+
   getUserWithSamrtMeters(userId: String) {
     this.service.getUserWithSamrtMeters(userId).subscribe((res) => {
       this.smartMeters = res;

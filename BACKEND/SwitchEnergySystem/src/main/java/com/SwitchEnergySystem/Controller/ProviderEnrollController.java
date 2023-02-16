@@ -39,5 +39,4 @@ public class ProviderEnrollController {
     public List<Provider> getTopProviders(@PathVariable int pageNo, @PathVariable int limit) {
         return providerEnrollService.getTopProviders(pageNo, limit);
     }
-
 }

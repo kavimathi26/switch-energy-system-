@@ -2,15 +2,15 @@
 <div class="container">
     <h2 class="center">USER DETAILS</h2>
     <br>
-<div>
-    <h2>User ID: {{userId}}</h2>
-</div>
-<br>
-<br>
-<div>
-    <button type="button" class="btn btn-secondary" (click)="createSmartMeter()" id="create">CREATE</button>
+    <div>
+        <h2>User ID: {{userId}}</h2>
+    </div>
+    <br>
+    <br>
+    <div>
+        <button type="button" class="btn btn-secondary" (click)="createSmartMeter()" id="create">CREATE</button>
 
-</div>
+    </div>
     <br>
     <div>
         <table class="table table-striped table-bordered">
@@ -27,7 +27,14 @@
                     <td>{{ smartMeter.smartMeterId }}</td>
                     <td>{{ smartMeter.totalReadings }}</td>
                     <td>{{ smartMeter.amountToBePaid }}</td>
-                    <td>{{ smartMeter.providerId }}<tr><button type="button" class="btn btn-warning" (click)="switchProviders(smartMeter.smartMeterId)">switch providers</button></tr></td>                    
+                    <td>
+                        <select [(ngModel)]="providerId" id="providerId"
+                            (ngModelChange)="switchProviders(smartMeter.smartMeterId,providerId)">
+                            <option value="" disabled selected>{{smartMeter.providerId}}</option>
+                            <option *ngFor="let provider of providersArray" [value]="provider.providerId">
+                                {{provider.providerId}}</option>
+                        </select>
+                    </td>
                 </tr>
             </tbody>
         </table>

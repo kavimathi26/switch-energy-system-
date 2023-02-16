@@ -115,12 +115,22 @@ public class SmartMeterEnrollRepository {
         Query query = new Query().addCriteria(Criteria.where("providerId").is(providerId));
         return mongoTemplate.find(query,SmartMeter.class).size();
     }
+    public long getCountOfSmartMetersForAParticularProviderId(String providerId) {
+        Query query1 = new Query().addCriteria(Criteria.where("providerId").is(providerId));
+        long count = mongoTemplate.find(query1,Provider.class).get(0).getCountOfSmartMeters();
+        return count;
+    }
     public void updateProviderId(String smartMeterId, String providerIdToBeChanged) {
         Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));
         Update update = new Update();
         update.set("providerId",providerIdToBeChanged);
         System.out.println(update);
         mongoTemplate.findAndModify(query,update,SmartMeter.class);
+        Query query1 = new Query().addCriteria(Criteria.where("providerId").is(providerIdToBeChanged));
+        Update update1 = new Update();
+        long count = getCountOfSmartMeters(providerIdToBeChanged);
+        update1.set("countOfSmartMeters",count+1);
+        mongoTemplate.findAndModify(query1,update1,Provider.class);
     }
 
 }

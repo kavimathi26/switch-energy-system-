@@ -13,7 +13,7 @@ public class Provider {
         providerName = "";
         countOfSmartMeters = 0;
         amountChargedPerUnit = 0.0;
-        visibility = "enable";
+        visibility = "Disable";
     }
     private String providerId;
     private String providerName;

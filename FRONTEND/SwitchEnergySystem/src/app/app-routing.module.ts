@@ -13,7 +13,8 @@ const routes: Routes = [{ path: 'providers/create', component: EnrollProviderCom
 { path: 'approval-status/smartmeters', component: AcceptRejectSmartmeterComponent },
 { path: 'view/smartmeters', component: ViewSmartmeterListComponent },
 { path: 'login', component: LoginComponentComponent },
-{ path: 'user/provider/view', component: ViewProvidersCurrentratesComponent }
+{ path: 'user/provider/view', component: ViewProvidersCurrentratesComponent },
+{ path: '', component: LoginComponentComponent },
 ];
 
 @NgModule({

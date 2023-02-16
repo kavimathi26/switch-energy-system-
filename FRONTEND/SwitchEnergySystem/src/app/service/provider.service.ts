@@ -57,4 +57,7 @@ export class Provider {
     getCountOfSmartMeters(providerId:String|null) {
         return this.http.get(`${this.smartMeterURL}count/providerId/${providerId}`)
     }
+    changeProviders(smartMeterId:String,providerId:String): Observable<any> {
+        return this.http.put(`${this.smartMeterURL}update/smartMeterId/${smartMeterId}/providerIdToBeChanged/${providerId}`,smartMeterId);
+    }
 }

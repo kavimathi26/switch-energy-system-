@@ -25,11 +25,11 @@ export class ViewEnableDisableProviderComponent implements OnInit {
   datas: Array<any> = [];
   smartMeters:Array<any>=[];
   editVisibility(visibility: String | null, providerId: String | null) {
-    if (visibility == "enable") {
-      this.visibility = "disable";
+    if (visibility == "Enable") {
+      this.visibility = "Disable";
     }
-    if (visibility == "disable") {
-      this.visibility = "enable";
+    if (visibility == "Disable") {
+      this.visibility = "Enable";
     }
     this.datas.push()
     this.service.updateVisibility(this.visibility, providerId).subscribe(response => {

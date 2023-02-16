@@ -24,7 +24,7 @@ enroll() {
   ngOnInit(): void {
   }
 setProvider() {
-    this.enrollProvider.push({ "providerId": this.providerId, "providerName": this.providerName,"countOfSmartMeters":0,"amountChargedPerUnit":this.amountCharged,visibility:"enable" });
+    this.enrollProvider.push({ "providerId": this.providerId, "providerName": this.providerName,"countOfSmartMeters":0,"amountChargedPerUnit":this.amountCharged,visibility:"Enable" });
   }
 sendProvider() {
   this.service.setProvider(this.enrollProvider[0]).subscribe((res) => {

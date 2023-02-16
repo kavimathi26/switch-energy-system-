@@ -1,8 +1,11 @@
 package com.SwitchEnergySystem.Repository;
 
+import com.SwitchEnergySystem.Pojo.SmartMeter;
 import com.SwitchEnergySystem.Pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +18,10 @@ public class UserEnrollRepository {
     SmartMeterEnrollRepository smartMeterEnrollRepository;
     public List viewAllUsers() {
         return mongoTemplate.findAll(User.class);
+    }
+    public User getUserByUserIdInLogin(String userName) {
+        Query query = new Query().addCriteria(Criteria.where("userName").is(userName));
+        return mongoTemplate.findOne(query, User.class);
     }
     public void enrollUser(User user) {
         if(user.getRole().equals("User")) {
