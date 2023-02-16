@@ -3,12 +3,14 @@ package com.SwitchEnergySystem.Service;
 import com.SwitchEnergySystem.Pojo.SmartMeter;
 import com.SwitchEnergySystem.Repository.SmartMeterEnrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class SmartMeterEnrollService {
+
     @Autowired
     SmartMeterEnrollRepository smartMeterEnrollRepository;
     public void enrollSmartMeter(SmartMeter smartMeter) {

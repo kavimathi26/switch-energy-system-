@@ -1,4 +1,3 @@
-<!-- <p>enroll-provider works!</p> -->
 <h2>Enroll New Provider</h2>
 <form class="enroll-provider">
     <mat-form-field class="form-field" appearence="fill">
@@ -9,6 +8,11 @@
     <mat-form-field class="form-field" appearence="fill">
         <mat-label>Provider Name</mat-label>
         <input matInput placeholder="Enter Provider Name" name="providerName" [(ngModel)]="providerName" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="form-field" appearence="fill">
+        <mat-label>Amount Per Unit</mat-label>
+        <input matInput placeholder="Enter Amount To Be Charged Per Unit" name="amountCharged" [(ngModel)]="amountCharged" required>
     </mat-form-field>
     <br>
     <button mat-raised-button color="primary" (click)="enroll()">ENROLL</button>

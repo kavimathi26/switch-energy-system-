@@ -14,6 +14,7 @@ export class ViewEnableDisableProviderComponent implements OnInit {
   count: number = 0;
   limit: number = 0;
   page: number = 0;
+
   constructor(private router: Router, private service: Provider) {
     this.service.viewProvider().subscribe(response => {
       this.providers = response;
@@ -22,6 +23,7 @@ export class ViewEnableDisableProviderComponent implements OnInit {
     )
   }
   datas: Array<any> = [];
+  smartMeters:Array<any>=[];
   editVisibility(visibility: String | null, providerId: String | null) {
     if (visibility == "enable") {
       this.visibility = "disable";
@@ -33,13 +35,14 @@ export class ViewEnableDisableProviderComponent implements OnInit {
     this.service.updateVisibility(this.visibility, providerId).subscribe(response => {
       console.log(response);
     })
-    // this.backToMainPage();
     // window.location.reload();
   }
   viewSmartMeters(providerId: String | null) {
     this.service.viewSmartMeters(providerId).subscribe(respronse => {
-      console.log(respronse);
-
+      // console.log(respronse);
+      this.smartMeters=respronse;
+      console.log(this.smartMeters);
+      
     })
   }
   getCountOfSmartMeters(providerId:String|null) {
@@ -56,4 +59,5 @@ export class ViewEnableDisableProviderComponent implements OnInit {
   }
   p: number = 1;
   items: number = 10;
+  
 }

@@ -2,22 +2,22 @@ package com.SwitchEnergySystem.Pojo;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
+@Document(collection = "Readings")
 @Getter
 @Setter
 public class ReadingsArray {
-    private Date date;
+    private String smartMeterId;
+    private LocalDate date;
     private long timeStamp;
     private double reading;
-   public ReadingsArray() {
+   public ReadingsArray(String smartMeterId) {
+       this.smartMeterId = smartMeterId;
         date = null;
         timeStamp = 0;
         reading = 0.0;
     }
-//    private ArrayList<ReadingsArray> readingsArray = new ArrayList<ReadingsArray>();
-//    readingsArray.add(new ReadingsArray());
-//    readingsArray.get(0).setDate();
 }
 

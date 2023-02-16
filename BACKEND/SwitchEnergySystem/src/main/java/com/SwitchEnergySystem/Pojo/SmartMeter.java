@@ -20,7 +20,7 @@ public class SmartMeter {
     public SmartMeter() {
         userId="";
         providerId = "DrEvil101";
-        approvalStatus = "pending";
+        approvalStatus = "Pending";
         totalReadings = 0.0;
         amountToBePaid = 0.0;
     }

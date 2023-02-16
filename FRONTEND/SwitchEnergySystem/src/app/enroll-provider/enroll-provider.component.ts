@@ -10,6 +10,7 @@ import { Provider } from '../service/provider.service';
 export class EnrollProviderComponent implements OnInit {
 providerId:String="";
 providerName:String="";
+amountCharged:Number=0;
 enrollProvider:Array<provider>=[];
 enroll() {
   this.setProvider();
@@ -23,7 +24,7 @@ enroll() {
   ngOnInit(): void {
   }
 setProvider() {
-    this.enrollProvider.push({ "providerId": this.providerId, "providerName": this.providerName,"countOfSmartMeters":0,"amountChargedPerUnit":25.0,visibility:"enable" });
+    this.enrollProvider.push({ "providerId": this.providerId, "providerName": this.providerName,"countOfSmartMeters":0,"amountChargedPerUnit":this.amountCharged,visibility:"enable" });
   }
 sendProvider() {
   this.service.setProvider(this.enrollProvider[0]).subscribe((res) => {

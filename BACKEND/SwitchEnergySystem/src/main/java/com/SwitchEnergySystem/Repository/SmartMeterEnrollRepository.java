@@ -2,15 +2,19 @@ package com.SwitchEnergySystem.Repository;
 
 
 import com.SwitchEnergySystem.Pojo.Provider;
+import com.SwitchEnergySystem.Pojo.ReadingsArray;
 import com.SwitchEnergySystem.Pojo.SmartMeter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.mongodb.core.query.Query;
 
+
 import java.util.List;
+import java.util.Random;
 
 
 @Repository
@@ -29,10 +33,56 @@ public class SmartMeterEnrollRepository {
         update.set("countOfSmartMeters",viewListOfSmartMetersForAParticularProviderId(providerId).size());
         mongoTemplate.findAndModify(query,update, Provider.class);
     }
+    public double amountToBePaidForAParticularSmartMeter(String providerId) {
+        Query query = new Query().addCriteria(Criteria.where("providerId").is(providerId));
+        System.out.println(mongoTemplate.find(query,Provider.class).get(0).getAmountChargedPerUnit());
+        double amount = mongoTemplate.find(query,Provider.class).get(0).getAmountChargedPerUnit();
+        return amount;
+    }
+//    public double amountToBePaidForAParticularSmartMeterInReadingsArray(double finalAmount) {
+//        return amountToBePaidForAParticularSmartMeter(finalAmount)
+//    }
+    public void enrollReadingsForAParticularSmartMeterId(String smartMeterId,String providerId) {
+        ReadingsArray readingsArray = new ReadingsArray(smartMeterId);
+        readingsArray.setDate(java.time.LocalDate.now());
+        readingsArray.setTimeStamp(System.currentTimeMillis());
+        Random r = new Random();
+        double randomValue = 10 + (100 - 10) * r.nextDouble();
+        readingsArray.setReading(randomValue);
+        mongoTemplate.save(readingsArray);
+        Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId).and("providerId").is(providerId));
+        Update update = new Update();
+        double reading = readingsArray.getReading();
+        double finalReading = Math.round(reading * 10000.0) / 10000.0;
+        update.set("totalReadings",finalReading);
+//        amountToBePaidForAParticularSmartMeter(smartMeterId);
+        double amount = readingsArray.getReading()*amountToBePaidForAParticularSmartMeter(providerId);
+        double finalAmount = Math.round(amount * 100.0) / 100.0;
+        update.set("amountToBePaid",finalAmount);
+        System.out.println(finalAmount);
+        mongoTemplate.findAndModify(query,update,SmartMeter.class);
+    }
+//    @Scheduled(cron = "*/10 * * * * *")
+//    public void display() {
+//
+//    }
+//    public void updateReadings(String smartMeterId) {
+//        Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));
+//        Update update = new Update();
+//        update.set("date",java.time.LocalDate.now());
+//        update.set("timeStamp",System.currentTimeMillis());
+//        Random r = new Random();
+//        double randomValue = 10 + (100 - 10) * r.nextDouble();
+//        update.set("reading",randomValue);
+//        mongoTemplate.findAndModify(query,update,ReadingsArray.class);
+//        System.out.println(System.currentTimeMillis());
+//    }
     public void enrollSmartMeter(SmartMeter smartMeter) {
         mongoTemplate.save(smartMeter);
         System.out.println(smartMeter.getProviderId());
+//        amountToBePaidForAParticularSmartMeter(smartMeter.getAmountToBePaid());
         updateSmartMeterCountForAProviderId(smartMeter.getProviderId());
+        enrollReadingsForAParticularSmartMeterId(smartMeter.getSmartMeterId(),smartMeter.getProviderId());
     }
 
     public SmartMeter approvalstatus(String approvalStatus,String smartMeterId) {
@@ -68,5 +118,13 @@ public class SmartMeterEnrollRepository {
         update.set("providerId",providerIdToBeChanged);
         System.out.println(update);
         mongoTemplate.findAndModify(query,update,SmartMeter.class);
+    }
+//    public void findReadinsAndAmountInSmartMeter
+    public void updateReadinsAndAmountInSmartMeter(String smartMeterId) {
+//        Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));
+//        ReadingsArray readingsArray = new ReadingsArray(smartMeterId);
+//        mongoTemplate.find(query, ReadingsArray.class);
+//        Update update = new Update();
+//        update.set("totalReadings",)
     }
 }

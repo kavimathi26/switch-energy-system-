@@ -36,8 +36,6 @@ public class ProviderEnrollRepository {
 
     public List<Provider> getTopProviders(int page, int size) {
             Query query = new Query();
-//            query.with(Sort.by(Sort.Direction.DESC, ""));
-//            query.skip(Integer.parseInt(page) * Integer.parseInt(size)).limit(Integer.parseInt(size));
             query.skip(page*size).limit(size);
             return mongoTemplate.find(query,Provider.class);
         }
@@ -50,8 +48,5 @@ public class ProviderEnrollRepository {
 //                .include("status");
        return mongoTemplate.find(query,Provider.class);
     }
-//    public int getCountOfSmartMeters(String providerId) {
-//        Query query = new Query().addCriteria(Criteria.where("providerId").is(providerId));
-//        return mongoTemplate.find(query, Provider.class).size();
-//    }
+
 }

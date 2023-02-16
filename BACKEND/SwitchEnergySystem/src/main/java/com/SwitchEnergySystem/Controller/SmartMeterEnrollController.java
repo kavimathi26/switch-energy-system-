@@ -41,6 +41,7 @@ public String enrollSmartMeter(@RequestBody SmartMeter smartMeter) {
 }
 @GetMapping("/count/providerId/{providerId}")
     public int getCountOfSmartMeters(@PathVariable String providerId) {
+//    smartMeterEnrollService.addReadings();
     return smartMeterEnrollService.getCountOfSmartMeters(providerId);
 
 }
@@ -48,4 +49,5 @@ public String enrollSmartMeter(@RequestBody SmartMeter smartMeter) {
     public void updateProviderId(@PathVariable String smartMeterId,@PathVariable String providerIdToBeChanged) {
     smartMeterEnrollService.updateProviderId(smartMeterId,providerIdToBeChanged);
 }
+
 }
