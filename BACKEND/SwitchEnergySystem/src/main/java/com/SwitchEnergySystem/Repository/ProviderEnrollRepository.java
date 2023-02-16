@@ -17,8 +17,6 @@ import java.util.List;
 public class ProviderEnrollRepository {
     @Autowired
     MongoTemplate mongoTemplate;
-    @Autowired
-    SmartMeterEnrollRepository smartMeterEnrollRepository;
     public void enrollProvider(Provider provider) {
         mongoTemplate.save(provider);
     }
@@ -34,12 +32,6 @@ public class ProviderEnrollRepository {
         Update update = new Update();
         update.set("visibility",visibility);
         return mongoTemplate.findAndModify(query,update, Provider.class);
-    }
-    public void updateSmartMeterCountForAProviderId(String providerId) {
-        Query query = new Query().addCriteria(Criteria.where("providerId").is(providerId));
-        Update update = new Update();
-        update.set("countOfSmartMeters",smartMeterEnrollRepository.viewListOfSmartMetersForAParticularProviderId(providerId).size());
-        mongoTemplate.findAndModify(query,update,Provider.class);
     }
 
     public List<Provider> getTopProviders(int page, int size) {

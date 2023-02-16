@@ -1,6 +1,7 @@
 package com.SwitchEnergySystem.Repository;
 
 
+import com.SwitchEnergySystem.Pojo.Provider;
 import com.SwitchEnergySystem.Pojo.SmartMeter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -16,17 +17,22 @@ import java.util.List;
 public class SmartMeterEnrollRepository {
     @Autowired
     MongoTemplate mongoTemplate;
-    @Autowired
-    ProviderEnrollRepository providerEnrollRepository;
 
     public List getSmartMeter(String smartMeterId) {
         Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));
         System.out.println("getSmartMeter");
         return mongoTemplate.find(query,SmartMeter.class);
     }
+    public void updateSmartMeterCountForAProviderId(String providerId) {
+        Query query = new Query().addCriteria(Criteria.where("providerId").is(providerId));
+        Update update = new Update();
+        update.set("countOfSmartMeters",viewListOfSmartMetersForAParticularProviderId(providerId).size());
+        mongoTemplate.findAndModify(query,update, Provider.class);
+    }
     public void enrollSmartMeter(SmartMeter smartMeter) {
-        providerEnrollRepository.updateSmartMeterCountForAProviderId(smartMeter.getProviderId());
         mongoTemplate.save(smartMeter);
+        System.out.println(smartMeter.getProviderId());
+        updateSmartMeterCountForAProviderId(smartMeter.getProviderId());
     }
 
     public SmartMeter approvalstatus(String approvalStatus,String smartMeterId) {
