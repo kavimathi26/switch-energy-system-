@@ -5,6 +5,7 @@ import com.SwitchEnergySystem.Repository.ProviderEnrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,7 +35,7 @@ public class ProviderEnrollService {
     public List viewProviderIds() {
         return providerEnrollRepository.viewProviderIds();
     }
-//    public int getCountOfSmartMeters(String providerId) {
-//        return providerEnrollRepository.getCountOfSmartMeters(providerId);
-//    }
+
+
+
 }

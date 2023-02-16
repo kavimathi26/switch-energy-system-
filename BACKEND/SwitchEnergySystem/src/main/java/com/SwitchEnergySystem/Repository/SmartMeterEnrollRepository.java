@@ -39,9 +39,7 @@ public class SmartMeterEnrollRepository {
         double amount = mongoTemplate.find(query,Provider.class).get(0).getAmountChargedPerUnit();
         return amount;
     }
-//    public double amountToBePaidForAParticularSmartMeterInReadingsArray(double finalAmount) {
-//        return amountToBePaidForAParticularSmartMeter(finalAmount)
-//    }
+
     public void enrollReadingsForAParticularSmartMeterId(String smartMeterId,String providerId) {
         ReadingsArray readingsArray = new ReadingsArray(smartMeterId);
         readingsArray.setDate(java.time.LocalDate.now());
@@ -77,10 +75,15 @@ public class SmartMeterEnrollRepository {
 //        mongoTemplate.findAndModify(query,update,ReadingsArray.class);
 //        System.out.println(System.currentTimeMillis());
 //    }
+    public void enrollUserSettings(String userId) {
+        SmartMeter smartMeter = new SmartMeter();
+        smartMeter.setUserId(userId);
+        System.out.println(smartMeter);
+        mongoTemplate.save(smartMeter);
+    }
     public void enrollSmartMeter(SmartMeter smartMeter) {
         mongoTemplate.save(smartMeter);
         System.out.println(smartMeter.getProviderId());
-//        amountToBePaidForAParticularSmartMeter(smartMeter.getAmountToBePaid());
         updateSmartMeterCountForAProviderId(smartMeter.getProviderId());
         enrollReadingsForAParticularSmartMeterId(smartMeter.getSmartMeterId(),smartMeter.getProviderId());
     }
@@ -119,12 +122,5 @@ public class SmartMeterEnrollRepository {
         System.out.println(update);
         mongoTemplate.findAndModify(query,update,SmartMeter.class);
     }
-//    public void findReadinsAndAmountInSmartMeter
-    public void updateReadinsAndAmountInSmartMeter(String smartMeterId) {
-//        Query query = new Query().addCriteria(Criteria.where("smartMeterId").is(smartMeterId));
-//        ReadingsArray readingsArray = new ReadingsArray(smartMeterId);
-//        mongoTemplate.find(query, ReadingsArray.class);
-//        Update update = new Update();
-//        update.set("totalReadings",)
-    }
+
 }

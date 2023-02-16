@@ -27,14 +27,9 @@
                     <td>{{ smartMeter.smartMeterId }}</td>
                     <td>{{ smartMeter.totalReadings }}</td>
                     <td>{{ smartMeter.amountToBePaid }}</td>
-                    <!-- {{ViewReadingsAndAmountToBePaid("User102",smartMeter.smartMeterId)}} -->
-                    <td>{{ smartMeter.providerId }}</td>                    
+                    <td>{{ smartMeter.providerId }}<tr><button type="button" class="btn btn-warning" (click)="switchProviders(smartMeter.smartMeterId)">switch providers</button></tr></td>                    
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-
-<!-- <div class="pagination justify-content-center">
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div> -->

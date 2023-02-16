@@ -1,13 +1,8 @@
 package com.SwitchEnergySystem.Repository;
 
-import com.SwitchEnergySystem.Pojo.SmartMeter;
 import com.SwitchEnergySystem.Pojo.User;
-import com.SwitchEnergySystem.Pojo.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,6 +16,11 @@ public class UserEnrollRepository {
     public List viewAllUsers() {
         return mongoTemplate.findAll(User.class);
     }
-
+    public void enrollUser(User user) {
+        if(user.getRole().equals("User")) {
+            smartMeterEnrollRepository.enrollUserSettings(user.getUserId());
+        }
+        mongoTemplate.save(user);
+    }
 
 }

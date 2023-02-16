@@ -15,27 +15,8 @@ public class UserEnrollService {
        return userEnrollRepository.viewAllUsers();
     }
 
-//    public void enrollUser(User user) {
-//       userEnrollRepository.enrollUser(user);
-//    }
-//
-//    public List<User> viewoneuser(String userId) {
-//        return userEnrollRepository.viewoneuser(userId);
-//    }
-//
-//    public List viewParticularSmartMeterForAUser(String smartMeterId) {
-//        return userEnrollRepository.viewParticularSmartMeterForAUser(smartMeterId);
-//    }
-//
-//    public void updateProivder(String smartMeterId, String providerId, String userId) {
-//        userEnrollRepository.updateProivder(smartMeterId,providerId,userId);
-//    }
-//
-//    public void createUser(String userId) {
-//        userEnrollRepository.createUser(userId);
-//    }
-//
-//    public int countUser(String userId) {
-//       return userEnrollRepository.getUserCount(userId);
-//    }
+
+    public void enrollUser(User user) {
+        userEnrollRepository.enrollUser(user);
+    }
 }

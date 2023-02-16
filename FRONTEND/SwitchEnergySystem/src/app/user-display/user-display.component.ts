@@ -28,7 +28,9 @@ export class UserDisplayComponent implements OnInit {
 
   ngOnInit(): void { }
 
+switchProviders(providerId:String) {
 
+}
   viewAllProviders() {
     this.service.ViewAllProviders().subscribe((res) => {
     })

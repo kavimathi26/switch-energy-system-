@@ -1,0 +1,25 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+<div class="container">
+    <h2 class="center">PROVIDER DETAILS</h2>
+    <br>
+    <br>
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Provider ID</th>
+                    <th>Provider Name</th>
+                    <th>Amount Charged Per Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let provider of providerArray">
+                    <td>{{ provider.providerId }}</td>
+                    <td>{{ provider.providerName }}</td>
+                    <td>$ {{ provider.amountChargedPerUnit }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

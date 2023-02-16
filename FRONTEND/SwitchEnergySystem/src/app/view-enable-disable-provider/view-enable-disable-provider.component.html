@@ -13,7 +13,6 @@
                     <th>Provider ID</th>
                     <th>Provider Name</th>
                     <th>No of SmartMeters</th>
-                    <th>List of SmartMeters</th>
                     <th>Amount Charged Per Unit</th>
                     <th>Visibility</th>
                 </tr>
@@ -23,10 +22,6 @@
                     <td>{{ provider.providerId }}</td>
                     <td>{{ provider.providerName }}</td>
                     <td>{{ provider.countOfSmartMeters }}</td>
-                    <td>
-                        <button type="button" class="btn btn-success" (click)="viewSmartMeters(provider.providerId)"
-                            >view list</button>
-                    </td>
                     <td>{{ provider.amountChargedPerUnit }}</td>
 
                     <td>

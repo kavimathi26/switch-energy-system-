@@ -8,13 +8,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @Document(collection = "User")
 public class User {
-   public User(String userId) {
-        this.userId=userId;
+   public User() {
+        userId="";
         password = "";
         role = "";
     }
 
-    private String userId;//for user random id will be generated. for admin we need to give id
+    private String userId;
     private String password;
     private String role;
 

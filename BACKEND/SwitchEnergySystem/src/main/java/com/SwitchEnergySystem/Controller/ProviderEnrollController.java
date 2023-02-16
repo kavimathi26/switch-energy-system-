@@ -5,7 +5,6 @@ import com.SwitchEnergySystem.Service.ProviderEnrollService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
 import java.util.List;
 @CrossOrigin("*")
 
@@ -38,20 +37,7 @@ public class ProviderEnrollController {
 
     @GetMapping("/topproviders/page/{pageNo}/limit/{limit}")
     public List<Provider> getTopProviders(@PathVariable int pageNo, @PathVariable int limit) {
-//        int pageNo = page;
-//        if(pageNo == 0) {
-//            pageNo = 0;
-//        }
-//        int limit = size;
-//        if(limit == 0) {
-//            limit = 10;
-//        }
-
         return providerEnrollService.getTopProviders(pageNo, limit);
     }
-//    @GetMapping("/count/providerId/{providerId}")
-//    public int getCountOfSmartMeters(@PathVariable String providerId) {
-//        return providerEnrollService.getCountOfSmartMeters(providerId);
-//
-//    }
+
 }

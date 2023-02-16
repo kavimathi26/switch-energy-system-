@@ -14,6 +14,7 @@ import { AcceptRejectSmartmeterComponent } from './accept-reject-smartmeter/acce
 import { UserDisplayComponent } from './user-display/user-display.component';
 import { ViewSmartmeterListComponent } from './view-smartmeter-list/view-smartmeter-list.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
+import { ViewProvidersCurrentratesComponent } from './view-providers-currentrates/view-providers-currentrates.component';
 // import {DialogDataExampleDialog} from './view-enable-disable-provider/view-enable-disable-provider.component';
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LoginComponentComponent } from './login-component/login-component.compo
     UserDisplayComponent,
     ViewSmartmeterListComponent,
     LoginComponentComponent,
+    ViewProvidersCurrentratesComponent,
     // DialogDataExampleDialog
   ],
   imports: [
