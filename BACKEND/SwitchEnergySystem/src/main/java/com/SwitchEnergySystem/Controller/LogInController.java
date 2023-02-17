@@ -1,6 +1,7 @@
 package com.SwitchEnergySystem.Controller;
 
 import com.SwitchEnergySystem.Pojo.Login;
+import com.SwitchEnergySystem.Pojo.User;
 import com.SwitchEnergySystem.Repository.LogInRepository;
 import com.SwitchEnergySystem.Service.JwtService;
 import com.SwitchEnergySystem.Service.LogInService;
@@ -31,13 +32,13 @@ public class LogInController {
         return login;
     }
     @PostMapping("/authenticate")
-    public JwtRequest authenticateAndGetToken(@RequestBody Login login) {
+    public JwtRequest authenticateAndGetToken(@RequestBody User user) {
         System.out.println("kavi authenticate");
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login.getUserName(), login.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));
         System.out.println("37th line");
         System.out.println(authentication.isAuthenticated());
         if (authentication.isAuthenticated()) {
-            String token = jwtService.generateToken(login.getUserName());
+            String token = jwtService.generateToken(user.getUserName());
             return new JwtRequest(token);
         } else {
             throw new UsernameNotFoundException("invalid user request !");

@@ -24,6 +24,7 @@ public class UserEnrollRepository {
         Query query = new Query().addCriteria(Criteria.where("userName").is(userName));
         return mongoTemplate.findOne(query, User.class);
     }
+
     public void enrollUser(User user) {
         if(user.getRole().equals("USER")) {
             smartMeterEnrollRepository.enrollUserSettings(user.getUserName());

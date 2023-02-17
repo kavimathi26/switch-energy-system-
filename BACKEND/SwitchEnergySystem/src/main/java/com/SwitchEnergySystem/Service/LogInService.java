@@ -1,6 +1,7 @@
 package com.SwitchEnergySystem.Service;
 
 import com.SwitchEnergySystem.Pojo.Login;
+import com.SwitchEnergySystem.Pojo.User;
 import com.SwitchEnergySystem.Repository.LogInRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

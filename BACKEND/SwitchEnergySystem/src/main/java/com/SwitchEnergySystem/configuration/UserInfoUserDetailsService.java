@@ -19,10 +19,12 @@ public class UserInfoUserDetailsService implements UserDetailsService {
 
     @Autowired
     private LogInRepository repository;
+//    @Autowired
+//    private UserEnrollRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Optional<Login> signUpOptional = Optional.ofNullable(repository.getUserByUserNameInLogin(userName));
+        Optional<User> signUpOptional = Optional.ofNullable(repository.getUserByUserName(userName));
         return signUpOptional.map(UserInfoUserDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("user not found " + userName));
 
