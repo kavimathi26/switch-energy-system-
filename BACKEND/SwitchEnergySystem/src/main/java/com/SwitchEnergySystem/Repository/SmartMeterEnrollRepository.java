@@ -75,9 +75,9 @@ public class SmartMeterEnrollRepository {
 //        mongoTemplate.findAndModify(query,update,ReadingsArray.class);
 //        System.out.println(System.currentTimeMillis());
 //    }
-    public void enrollUserSettings(String userId) {
+    public void enrollUserSettings(String userName) {
         SmartMeter smartMeter = new SmartMeter();
-        smartMeter.setUserId(userId);
+        smartMeter.setUserName(userName);
         System.out.println(smartMeter);
         mongoTemplate.save(smartMeter);
     }
@@ -101,13 +101,13 @@ public class SmartMeterEnrollRepository {
         return mongoTemplate.find(query,SmartMeter.class);
     }
 
-    public List getUserWithSmartMeters(String userId) {
-        Query query = new Query().addCriteria(Criteria.where("userId").is(userId).and("approvalStatus").is("accepted"));
+    public List getUserWithSmartMeters(String userName) {
+        Query query = new Query().addCriteria(Criteria.where("userName").is(userName).and("approvalStatus").is("accepted"));
         return mongoTemplate.find(query,SmartMeter.class);
     }
 
-    public List getUserWithSmartMetersPending(String userId) {
-        Query query = new Query().addCriteria(Criteria.where("userId").is(userId).and("approvalStatus").is("Pending"));
+    public List getUserWithSmartMetersPending(String userName) {
+        Query query = new Query().addCriteria(Criteria.where("userName").is(userName).and("approvalStatus").is("Pending"));
         return mongoTemplate.find(query,SmartMeter.class);
     }
 

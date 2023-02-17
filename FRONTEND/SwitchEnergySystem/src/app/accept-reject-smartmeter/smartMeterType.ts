@@ -1,5 +1,5 @@
 export interface smartMeterType {
-        "userId": String,
+        "userName": String,
         "smartMeterId": String,
         "providerId": String,
         "approvalStatus": String,

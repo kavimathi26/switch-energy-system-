@@ -33,23 +33,23 @@ export class Provider {
     ViewAllProviders():Observable<any> {
         return this.http.get(`${this.baseURL}viewproviders`)
     }
-    updateProviders(smartmeterid:String,providerid:String,userId:String):Observable<any> {
-        return this.http.put(`${this.userURL}smartmeterid/${smartmeterid}/providerid/${providerid}/userId/${userId}`,smartmeterid);
+    updateProviders(smartmeterid:String,providerid:String,userName:String):Observable<any> {
+        return this.http.put(`${this.userURL}smartmeterid/${smartmeterid}/providerid/${providerid}/userName/${userName}`,smartmeterid);
     }
-    createSmartMeter(userId:String):Observable<any> {
-        return this.http.post(`${this.userURL}userId/${userId}`,userId)
+    createSmartMeter(userName:String):Observable<any> {
+        return this.http.post(`${this.userURL}userName/${userName}`,userName)
     }
-    getUserCount(userId:String):Observable<Object> {
-        return this.http.get(`${this.userURL}userId/${userId}`)
+    getUserCount(userName:String):Observable<Object> {
+        return this.http.get(`${this.userURL}userName/${userName}`)
     }
-    getUserWithSamrtMeters(userId:String):Observable<any> {
-        return this.http.get(`${this.smartMeterURL}userId/${userId}`)
+    getUserWithSamrtMeters(userName:String):Observable<any> {
+        return this.http.get(`${this.smartMeterURL}userName/${userName}`)
     }
     enrollSmartMeterForAUser(NewuserEnrollType:userEnrollType):Observable<Object> {
         return this.http.post(`${this.smartMeterURL}enroll`,NewuserEnrollType);
     }
-    getUserWithSmartMetersPending(userId:String): Observable<any>{
-        return this.http.get(`${this.smartMeterURL}pending/userId/${userId}`)
+    getUserWithSmartMetersPending(userName:String): Observable<any>{
+        return this.http.get(`${this.smartMeterURL}pending/userName/${userName}`)
     }
     approveSmartMeter(approvalStatus:String,smartMeterId:String): Observable<any>{
         return this.http.put(`${this.smartMeterURL}approvalstatus/${approvalStatus}/smartmeterid/${smartMeterId}`,smartMeterId);

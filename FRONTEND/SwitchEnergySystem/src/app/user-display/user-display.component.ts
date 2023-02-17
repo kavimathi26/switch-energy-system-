@@ -12,13 +12,13 @@ export class UserDisplayComponent implements OnInit {
   smartMeters: Array<any> = [];
   resSmartMeters: Array<responseSmartMeter> = [];
   providersArray: Array<any>=[];
-  userId = "Kavi123";
+  userName = "Kavi123";
   smartMeterId = "";
   totalReadings: number = 0;
   amountToBePaid = "";
   providerId = "";
   userEnroll: Array<userEnrollType> = [{
-    "userId": this.userId, "providerId": "DrEvil101",
+    "userName": this.userName, "providerId": "DrEvil101",
     "approvalStatus": "Pending",
     "totalReadings": 0.0,
     "amountToBePaid": 0.0
@@ -48,8 +48,8 @@ window.location.reload();
     })
   }
 
-  getUserWithSamrtMeters(userId: String) {
-    this.service.getUserWithSamrtMeters(userId).subscribe((res) => {
+  getUserWithSamrtMeters(userName: String) {
+    this.service.getUserWithSamrtMeters(userName).subscribe((res) => {
       this.smartMeters = res;
 
     })

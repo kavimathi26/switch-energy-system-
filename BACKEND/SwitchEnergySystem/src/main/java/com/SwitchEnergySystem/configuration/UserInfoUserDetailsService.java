@@ -1,11 +1,9 @@
 package com.SwitchEnergySystem.configuration;
 
+import com.SwitchEnergySystem.Pojo.Login;
 import com.SwitchEnergySystem.Pojo.User;
+import com.SwitchEnergySystem.Repository.LogInRepository;
 import com.SwitchEnergySystem.Repository.UserEnrollRepository;
-//import com.instagram.instaModule.model.SignUp;
-//import com.instagram.instaModule.model.Users;
-//import com.instagram.instaModule.repository.SignUpRepository;
-//import com.instagram.instaModule.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,11 +18,11 @@ import java.util.Optional;
 public class UserInfoUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserEnrollRepository repository;
+    private LogInRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Optional<User> signUpOptional = Optional.ofNullable(repository.getUserByUserIdInLogin(userName));
+        Optional<Login> signUpOptional = Optional.ofNullable(repository.getUserByUserNameInLogin(userName));
         return signUpOptional.map(UserInfoUserDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("user not found " + userName));
 

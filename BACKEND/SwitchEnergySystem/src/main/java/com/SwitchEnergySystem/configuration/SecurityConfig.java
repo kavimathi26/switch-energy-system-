@@ -36,18 +36,11 @@ public class SecurityConfig {
     }
 
     @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        return http.csrf().disable()
-//                .authorizeHttpRequests()
-//                .requestMatchers("/post/**","/signup/**").permitAll()
-//                .and()
-//                .authorizeHttpRequests().requestMatchers("/**")
-//                .authenticated().and().formLogin().and().build();
-//    }
+
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.cors().and().csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/login**").permitAll()
+                .requestMatchers("/login**","/login/authenticate/**").permitAll()
                 .and()
                 .authorizeHttpRequests().requestMatchers("/**")
                 .authenticated().and()

@@ -1,5 +1,6 @@
 package com.SwitchEnergySystem.configuration;
 
+import com.SwitchEnergySystem.Pojo.Login;
 import com.SwitchEnergySystem.Pojo.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,14 +14,14 @@ import java.util.stream.Collectors;
 public class UserInfoUserDetails implements UserDetails {
 
 
-    private String userName;
     private String password;
+    private String userName;
     private List<GrantedAuthority> authorities;
 
-    public UserInfoUserDetails(User user) {
-        userName = user.getUserId();
-        password = user.getPassword();
-        authorities= Arrays.stream(user.getRole().split(","))
+    public UserInfoUserDetails(Login login) {
+        userName = login.getUserName();
+        password = login.getPassword();
+        authorities= Arrays.stream(login.getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }

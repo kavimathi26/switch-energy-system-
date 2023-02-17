@@ -25,15 +25,15 @@ public class SmartMeterEnrollService {
         return smartMeterEnrollRepository.viewListOfSmartMetersForAParticularProviderId(providerId);
     }
 
-    public List getUserWithSmartMeters(String userId) {
-        return smartMeterEnrollRepository.getUserWithSmartMeters(userId);
+    public List getUserWithSmartMeters(String userName) {
+        return smartMeterEnrollRepository.getUserWithSmartMeters(userName);
     }
 
     public void approveSmartMeter(String smartMeterId) {
 //        smartMeterEnrollRepository.approveSmartMeter(smartMeterId);
     }
-    public List getUserWithSmartMetersPending(String userId) {
-       return smartMeterEnrollRepository.getUserWithSmartMetersPending(userId);
+    public List getUserWithSmartMetersPending(String userName) {
+       return smartMeterEnrollRepository.getUserWithSmartMetersPending(userName);
     }
 
     public int getCountOfSmartMeters(String providerId) {

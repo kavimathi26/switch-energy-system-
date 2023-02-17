@@ -3,6 +3,7 @@ package com.SwitchEnergySystem.Controller;
 import com.SwitchEnergySystem.Pojo.Provider;
 import com.SwitchEnergySystem.Service.ProviderEnrollService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,15 +23,20 @@ public class ProviderEnrollController {
         return providerEnrollService.viewProviderIds();
     }
     @PostMapping("/enroll")
+    @PreAuthorize("hasAuthority('ADMIN')")
+
     public String enrollProvider(@RequestBody Provider provider) {
         providerEnrollService.enrollProvider(provider);
         return "Provided enrolled";
     }
     @PutMapping("/visibility/{visibility}/providerid/{providerId}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+
     public Provider visibiltyUpdate(@PathVariable String visibility,@PathVariable String providerId) {
        return providerEnrollService.visibiltyUpdate(visibility,providerId);
     }
     @GetMapping("/getoneprovider/{providerId}")
+    @PreAuthorize("hasAuthority('USER')")
     public Provider getoneprovider(@PathVariable String providerId) {
         return providerEnrollService.getoneprovider(providerId);
     }

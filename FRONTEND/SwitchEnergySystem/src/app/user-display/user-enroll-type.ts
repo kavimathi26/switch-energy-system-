@@ -1,5 +1,5 @@
 export interface userEnrollType {
-    "userId": String,
+    "userName": String,
     "providerId": String,
     "approvalStatus": String,
     "totalReadings": Number,

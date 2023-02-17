@@ -10,29 +10,29 @@ import { smartMeterType } from './smartMeterType';
 })
 export class AcceptRejectSmartmeterComponent implements OnInit {
 
-  constructor(private service:Provider) { }
+  constructor(private service: Provider) { }
 
   ngOnInit(): void {
     this.getUserWithSmartMetersPending();
   }
-userId="Kavi123"
-userDetails:Array<smartMeterType>=[];
-getUserWithSmartMetersPending(){
-  this.service.getUserWithSmartMetersPending("Kavi123").subscribe((res)=>{
-    console.log(res);
-    this.userDetails=res;
-  })
-}
-editApprovalStatus(smartMeterId:String) {
-this.service.approveSmartMeter("accepted",smartMeterId).subscribe((res)=>{
-  console.log(res);
-  window.location.reload();
-})
-}
-editApprovalStatusReject(smartMeterId:String) {
-  this.service.approveSmartMeter("rejected",smartMeterId).subscribe((res)=>{
-    console.log(res);
-    window.location.reload();
-  })
-}
+  userName = "Kavi123"
+  userDetails: Array<smartMeterType> = [];
+  getUserWithSmartMetersPending() {
+    this.service.getUserWithSmartMetersPending("Kavi123").subscribe((res) => {
+      console.log(res);
+      this.userDetails = res;
+    })
+  }
+  editApprovalStatus(smartMeterId: String) {
+    this.service.approveSmartMeter("accepted", smartMeterId).subscribe((res) => {
+      console.log(res);
+      window.location.reload();
+    })
+  }
+  editApprovalStatusReject(smartMeterId: String) {
+    this.service.approveSmartMeter("rejected", smartMeterId).subscribe((res) => {
+      console.log(res);
+      window.location.reload();
+    })
+  }
 }

@@ -1,5 +1,6 @@
 package com.SwitchEnergySystem.Service;
 
+import com.SwitchEnergySystem.Pojo.Login;
 import com.SwitchEnergySystem.Pojo.User;
 import com.SwitchEnergySystem.Repository.UserEnrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,6 @@ public class UserEnrollService {
     public void enrollUser(User user) {
         userEnrollRepository.enrollUser(user);
     }
+
+
 }

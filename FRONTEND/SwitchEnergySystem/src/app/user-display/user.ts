@@ -1,5 +1,5 @@
 export interface user {
-    userId :string;
+    userName :string;
     smartMeterId :string;
     totalReadings : number;
     amountToBePaid :string;

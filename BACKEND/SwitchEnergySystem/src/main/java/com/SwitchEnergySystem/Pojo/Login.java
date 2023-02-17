@@ -6,16 +6,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Document(collection = "User")
-public class User {
-   public User() {
-       userName="";
-        password = "";
-        role = "";
-    }
-
+@Document(collection = "LogIn")
+public class Login {
     private String userName;
     private String password;
     private String role;
-
 }
