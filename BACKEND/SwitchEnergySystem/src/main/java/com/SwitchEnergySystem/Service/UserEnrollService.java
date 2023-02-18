@@ -26,4 +26,7 @@ public class UserEnrollService {
     }
 
 
+    public String findRole(String userName) {
+        return userEnrollRepository.findRole(userName);
+    }
 }

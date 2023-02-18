@@ -33,4 +33,9 @@ public class UserEnrollRepository {
     }
 
 
+    public String findRole(String userName) {
+        Query query = new Query().addCriteria(Criteria.where("userName").is(userName));
+//        System.out.println(mongoTemplate.findOne(query,User.class).getRole());
+        return mongoTemplate.findOne(query,User.class).getRole();
+    }
 }

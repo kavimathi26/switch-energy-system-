@@ -7,6 +7,7 @@ import { smartMeter } from "../user-display/smartMeter";
 import { userEnrollType } from "../user-display/user-enroll-type";
 import { TokenInterceptorService } from "./token-interceptor-service";
 import { Token } from "../view-enable-disable-provider/token.interface";
+import { userType } from "../login-component/userType";
 
 @Injectable({
     providedIn: 'root'
@@ -79,5 +80,8 @@ export class Provider {
     }
     changeProviders(smartMeterId: String, providerId: String): Observable<any> {
         return this.http.put(`${this.smartMeterURL}update/smartMeterId/${smartMeterId}/providerIdToBeChanged/${providerId}`, smartMeterId);
+    }
+    getRole(UserName:string):Observable<String>  {
+        return this.http.get(`${this.userURL}findRole/userName/${UserName}`, {responseType: 'text'})
     }
 }

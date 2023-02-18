@@ -27,5 +27,10 @@ public class UserEnrollController {
         userEnrollService.enrollUser(user);
     }
 
+    @GetMapping("/findRole/userName/{userName}")
+//    @PreAuthorize("hasAuthority('USER')")
 
+    public String findRole(@PathVariable String userName) {
+        return userEnrollService.findRole(userName);
+    }
 }
