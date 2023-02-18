@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { provider } from '../enroll-provider/provider';
-import { MasterServiceTsService } from '../service/master-service.ts.service';
 import { Provider } from '../service/provider.service';
 
 @Component({
@@ -16,6 +15,17 @@ export class ViewEnableDisableProviderComponent implements OnInit {
   limit: number = 0;
   page: number = 0;
 
+
+  datas: Array<any> = [];
+  smartMeters: Array<any> = [];
+
+  authRequest: any = {
+    "userName": "Kavi123",
+    "password": "kavimathi",
+    "role": "USER"
+  };
+
+
   constructor(private router: Router, private service: Provider) {
     this.service.viewProvider().subscribe(response => {
       this.providers = response;
@@ -23,8 +33,7 @@ export class ViewEnableDisableProviderComponent implements OnInit {
     }
     )
   }
-  datas: Array<any> = [];
-  smartMeters:Array<any>=[];
+  
   editVisibility(visibility: String | null, providerId: String | null) {
     if (visibility == "Enable") {
       this.visibility = "Disable";
@@ -41,44 +50,42 @@ export class ViewEnableDisableProviderComponent implements OnInit {
   viewSmartMeters(providerId: String | null) {
     this.service.viewSmartMeters(providerId).subscribe(respronse => {
       // console.log(respronse);
-      this.smartMeters=respronse;
+      this.smartMeters = respronse;
       console.log(this.smartMeters);
-      
+
     })
   }
-  getCountOfSmartMeters(providerId:String|null) {
-    this.service.getCountOfSmartMeters(providerId).subscribe(Response=> {
+  getCountOfSmartMeters(providerId: String | null) {
+    this.service.getCountOfSmartMeters(providerId).subscribe(Response => {
       console.log(Response);
-      
+
     })
   }
   backToMainPage() {
     const tempRouter = this.router;
     tempRouter.navigate(['providers/view']);
   }
- ngOnInit(): void {
-    this.getAccessToken(this.authRequest);
+  ngOnInit(): void {
+    this.getAccessToken();
   }
 
-  authRequest:any={
-    "userName":"Kavi123",
-    "password":"kavimathi",
-    "role":"USER"
-  };
+  
 
-  response:any;
+  response: any;
 
-  public getAccessToken(authRequest: any){
-    let resp=this.service.generateToken(authRequest);
-    resp.subscribe(data=>this.accessApi(data));
-      }
-    
-    
-      public accessApi(token: string){
-    let resp=this.service.welcome(token);
-    resp.subscribe(data=>this.response=data);
-      }
+
+  public getAccessToken() {
+    this.service.generateToken(this.authRequest).subscribe(data => 
+      sessionStorage.setItem("token",data.token)      
+    );
+  }
+
+
+  public accessApi(token: string) {
+    let resp = this.service.welcome(token);
+    resp.subscribe(data => this.response = data);
+  }
   p: number = 1;
   items: number = 10;
-  
+
 }

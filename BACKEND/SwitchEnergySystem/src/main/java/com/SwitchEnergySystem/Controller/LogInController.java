@@ -33,9 +33,7 @@ public class LogInController {
     }
     @PostMapping("/authenticate")
     public JwtRequest authenticateAndGetToken(@RequestBody User user) {
-        System.out.println("kavi authenticate");
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));
-        System.out.println("37th line");
         System.out.println(authentication.isAuthenticated());
         if (authentication.isAuthenticated()) {
             String token = jwtService.generateToken(user.getUserName());
