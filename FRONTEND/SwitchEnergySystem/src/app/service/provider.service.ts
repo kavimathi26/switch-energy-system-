@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { provider } from "../enroll-provider/provider";
 import { user } from "../user-display/user";
 import { smartMeter } from "../user-display/smartMeter";
 import { userEnrollType } from "../user-display/user-enroll-type";
 
-@Injectable({
-    providedIn: 'root'
-})
-
+// @Injectable({
+//     providedIn: 'root'
+// })
+@Injectable()
 export class Provider {
     
     baseURL: string = 'http://localhost:8080/provider/';
@@ -17,12 +17,29 @@ export class Provider {
     userURL: string='http://localhost:8080/user/';
     userDetails: user[] = [];
     constructor(private http: HttpClient) {} 
+    // constructor(private httpClient: HttpClient) { }
+  public generateToken(request: any) {
+    return this.http.post<string>("http://localhost:8080/login/authenticate", request, {  responseType: 'text' as 'json' });
+  }
+
+
+  public welcome(token: string) {
+    let tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.get<any>("http://localhost:8080/provider/viewproviders", {headers, responseType: 'text' as 'json' });
+  }
 
     setProvider(newProvider: provider): Observable<provider> {
         return this.http.post<provider>(`${this.baseURL}enroll`,newProvider);
     }
     viewProvider():Observable<any>{
-        return this.http.get(`${this.baseURL}topproviders/page/0/limit/100`)
+    // let tokenStr = 'Bearer ' + token;
+
+    // const headers = new HttpHeaders().set('Authorization', tokenStr);
+
+        return this.http.get(`${this.baseURL}topproviders/page/0/limit/100`
+        // ,{headers, responseType: 'text' as 'json' }
+        )
     }
     updateVisibility(visibility:String|null,providerId:String|null):Observable<any> {
         return this.http.put(`${this.baseURL}visibility/${visibility}/providerid/${providerId}`,visibility);

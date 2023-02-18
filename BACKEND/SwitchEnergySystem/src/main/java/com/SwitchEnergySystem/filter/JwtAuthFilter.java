@@ -33,6 +33,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String username = null;
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             token = authHeader.substring(7);
+//            token = authHeader.split(" ")[1].trim();
+//            token = authHeader.substring("Bearer ".length());
             username = jwtService.extractUsername(token);
         }
 

@@ -23,14 +23,17 @@ public class ProviderEnrollController {
         return providerEnrollService.viewProviderIds();
     }
     @PostMapping("/enroll")
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('USER')")
 
     public String enrollProvider(@RequestBody Provider provider) {
         providerEnrollService.enrollProvider(provider);
         return "Provided enrolled";
     }
     @PutMapping("/visibility/{visibility}/providerid/{providerId}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('USER')")
+
 
     public Provider visibiltyUpdate(@PathVariable String visibility,@PathVariable String providerId) {
        return providerEnrollService.visibiltyUpdate(visibility,providerId);
@@ -42,6 +45,7 @@ public class ProviderEnrollController {
     }
 
     @GetMapping("/topproviders/page/{pageNo}/limit/{limit}")
+    @PreAuthorize("hasAuthority('USER')")
     public List<Provider> getTopProviders(@PathVariable int pageNo, @PathVariable int limit) {
         return providerEnrollService.getTopProviders(pageNo, limit);
     }

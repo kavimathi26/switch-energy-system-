@@ -5,6 +5,7 @@ public class JwtRequest {
     public JwtRequest(String token) {
         this.token = token;
     }
+
     public String getToken() {
         return token;
     }

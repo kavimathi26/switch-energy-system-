@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { provider } from '../enroll-provider/provider';
+import { MasterServiceTsService } from '../service/master-service.ts.service';
 import { Provider } from '../service/provider.service';
 
 @Component({
@@ -55,8 +56,28 @@ export class ViewEnableDisableProviderComponent implements OnInit {
     const tempRouter = this.router;
     tempRouter.navigate(['providers/view']);
   }
-  ngOnInit(): void {
+ ngOnInit(): void {
+    this.getAccessToken(this.authRequest);
   }
+
+  authRequest:any={
+    "userName":"Kavi123",
+    "password":"kavimathi",
+    "role":"USER"
+  };
+
+  response:any;
+
+  public getAccessToken(authRequest: any){
+    let resp=this.service.generateToken(authRequest);
+    resp.subscribe(data=>this.accessApi(data));
+      }
+    
+    
+      public accessApi(token: string){
+    let resp=this.service.welcome(token);
+    resp.subscribe(data=>this.response=data);
+      }
   p: number = 1;
   items: number = 10;
   

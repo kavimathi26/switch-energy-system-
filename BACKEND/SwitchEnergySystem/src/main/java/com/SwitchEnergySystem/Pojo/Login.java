@@ -12,3 +12,4 @@ public class Login {
     private String password;
     private String role;
 }
+//We dont need this class for this project

@@ -5,7 +5,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EnrollProviderComponent } from './enroll-provider/enroll-provider.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations' ;
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -15,6 +15,8 @@ import { UserDisplayComponent } from './user-display/user-display.component';
 import { ViewSmartmeterListComponent } from './view-smartmeter-list/view-smartmeter-list.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { ViewProvidersCurrentratesComponent } from './view-providers-currentrates/view-providers-currentrates.component';
+import { TokenInterceptorServiceTsService } from './service/token-interceptor-service.ts.service';
+import { Provider } from './service/provider.service';
 // import {DialogDataExampleDialog} from './view-enable-disable-provider/view-enable-disable-provider.component';
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import { ViewProvidersCurrentratesComponent } from './view-providers-currentrate
     FormsModule,
     NgxPaginationModule,
   ],
-  providers: [],
+  providers: [Provider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
