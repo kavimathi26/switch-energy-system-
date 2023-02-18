@@ -11,8 +11,7 @@ import { AuthRequestType } from './authRequest';
 export class LoginComponentComponent implements OnInit {
   userName: string = '';
   password: string = '';
-  role: string = '';
-  resRole:String='';
+  resRole: String = '';
   constructor(private router: Router, private service: Provider) { }
 
   ngOnInit(): void {
@@ -21,31 +20,40 @@ export class LoginComponentComponent implements OnInit {
   authRequest: Array<AuthRequestType> = [];
 
   setAuthRequest() {
-    this.authRequest.push({ "userName": this.userName, "password": this.password, "role": "USER" });
+    this.authRequest.push({ "userName": this.userName, "password": this.password});
     console.log(this.authRequest);
     this.getAccessToken();
-    this.getUserType();    
+    this.getUserType();
   }
 
   public getAccessToken() {
-    this.service.generateToken(this.authRequest[0]).subscribe(data =>
+    this.service.generateToken(this.authRequest[this.authRequest.length-1]).subscribe(data =>
       sessionStorage.setItem("token", data.token)
     );
-    this.routeToAdmin();
   }
 
   routeToAdmin() {
-    if(this.role=="USER") {
+    if (this.resRole == "USER") {
       this.router.navigateByUrl('user/view');
+      console.log("routeToUser");
+
+    }
+    else if (this.resRole == "ADMIN") {
+      this.router.navigateByUrl('providers/view');
+      console.log("routeToAdmin");
+
     }
   }
 
   getUserType() {
-    this.service.getRole(this.userName).subscribe((res)=>
-    {
+    this.service.getRole(this.userName).subscribe((res) => {
       this.resRole = res;
-      
+      this.routeToAdmin();
+
     }
+
     )
+
   }
+
 }

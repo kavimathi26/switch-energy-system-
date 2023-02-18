@@ -35,11 +35,16 @@ public class ProviderEnrollRepository {
         return mongoTemplate.findAndModify(query,update, Provider.class);
     }
 
-    public List<Provider> getTopProviders(int page, int size) {
+    public List<Provider> getTopProvidersForAdmin(int page, int size) {
             Query query = new Query();
             query.skip(page*size).limit(size);
             return mongoTemplate.find(query,Provider.class);
         }
+    public List<Provider> getTopProvidersForUser(int page, int size) {
+        Query query = new Query();
+        query.skip(page*size).limit(size);
+        return mongoTemplate.find(query,Provider.class);
+    }
 
     public List viewProviderIds() {
         Query query = new Query();

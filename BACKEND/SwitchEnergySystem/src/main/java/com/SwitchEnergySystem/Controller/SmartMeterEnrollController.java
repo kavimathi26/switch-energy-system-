@@ -10,6 +10,7 @@ import java.util.List;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/smartmeter")
+
 public class SmartMeterEnrollController {
 @Autowired
 SmartMeterEnrollService smartMeterEnrollService;
@@ -27,11 +28,15 @@ public String enrollSmartMeter(@RequestBody SmartMeter smartMeter) {
 
 }
 @GetMapping("/providerId/{providerId}")
+@PreAuthorize("hasAuthority('USER')")
+
     public List viewListOfSmartMetersForAParticularProviderId(@PathVariable String providerId) {
     return smartMeterEnrollService.viewListOfSmartMetersForAParticularProviderId(providerId);
 }
 
 @GetMapping("/userName/{userName}")
+@PreAuthorize("hasAuthority('USER')")
+
     public List getUserWithSmartMeters(@PathVariable String userName) {
     return smartMeterEnrollService.getUserWithSmartMeters(userName);
 }
@@ -42,13 +47,11 @@ public String enrollSmartMeter(@RequestBody SmartMeter smartMeter) {
 }
 @GetMapping("/pending/userName/{userName}")
 @PreAuthorize("hasAuthority('ADMIN')")
-
     public List getUserWithSmartMetersPending(@PathVariable String userName) {
     return smartMeterEnrollService.getUserWithSmartMetersPending(userName);
 }
 @GetMapping("/count/providerId/{providerId}")
 @PreAuthorize("hasAuthority('ADMIN')")
-
     public int getCountOfSmartMeters(@PathVariable String providerId) {
 //    smartMeterEnrollService.addReadings();
     return smartMeterEnrollService.getCountOfSmartMeters(providerId);

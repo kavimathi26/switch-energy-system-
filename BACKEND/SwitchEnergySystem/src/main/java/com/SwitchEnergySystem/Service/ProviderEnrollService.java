@@ -28,8 +28,11 @@ public class ProviderEnrollService {
         return providerEnrollRepository.getOneProvider(providerId);
     }
 
-    public List<Provider> getTopProviders(int page, int size) {
-        return providerEnrollRepository.getTopProviders(page,size);
+    public List<Provider> getTopProvidersForAdmin(int page, int size) {
+        return providerEnrollRepository.getTopProvidersForAdmin(page,size);
+    }
+    public List<Provider> getTopProvidersForUser(int page, int size) {
+        return providerEnrollRepository.getTopProvidersForUser(page,size);
     }
 
     public List viewProviderIds() {

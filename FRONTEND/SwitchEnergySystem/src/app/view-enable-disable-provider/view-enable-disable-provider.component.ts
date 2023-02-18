@@ -27,7 +27,7 @@ export class ViewEnableDisableProviderComponent implements OnInit {
 
 
   constructor(private router: Router, private service: Provider) {
-    this.service.viewProvider().subscribe(response => {
+    this.service.viewProviderForAdmin().subscribe(response => {
       this.providers = response;
       this.count = 100;
     }
@@ -66,25 +66,12 @@ export class ViewEnableDisableProviderComponent implements OnInit {
     tempRouter.navigate(['providers/view']);
   }
   ngOnInit(): void {
-    this.getAccessToken();
+    
   }
 
   
 
-  response: any;
 
-
-  public getAccessToken() {
-    this.service.generateToken(this.authRequest).subscribe(data => 
-      sessionStorage.setItem("token",data.token)      
-    );
-  }
-
-
-  public accessApi(token: string) {
-    let resp = this.service.welcome(token);
-    resp.subscribe(data => this.response = data);
-  }
   p: number = 1;
   items: number = 10;
 

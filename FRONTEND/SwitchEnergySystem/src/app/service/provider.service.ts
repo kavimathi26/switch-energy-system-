@@ -36,14 +36,11 @@ export class Provider {
     setProvider(newProvider: provider): Observable<provider> {
         return this.http.post<provider>(`${this.baseURL}enroll`, newProvider);
     }
-    viewProvider(): Observable<any> {
-        // let tokenStr = 'Bearer ' + token;
-
-        // const headers = new HttpHeaders().set('Authorization', tokenStr);
-
-        return this.http.get(`${this.baseURL}topproviders/page/0/limit/100`
-            // ,{headers, responseType: 'text' as 'json' }
-        )
+    viewProviderForAdmin(): Observable<any> {
+        return this.http.get(`${this.baseURL}topprovidersforadmin/page/0/limit/100`)
+    }
+    viewProviderForUser(): Observable<any> {
+        return this.http.get(`${this.baseURL}topprovidersforuser/page/0/limit/100`)
     }
     updateVisibility(visibility: String | null, providerId: String | null): Observable<any> {
         return this.http.put(`${this.baseURL}visibility/${visibility}/providerid/${providerId}`, visibility);

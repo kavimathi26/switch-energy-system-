@@ -31,6 +31,7 @@ public class UserEnrollController {
 //    @PreAuthorize("hasAuthority('USER')")
 
     public String findRole(@PathVariable String userName) {
+
         return userEnrollService.findRole(userName);
     }
 }
