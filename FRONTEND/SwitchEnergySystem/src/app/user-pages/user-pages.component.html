@@ -1,0 +1,26 @@
+<section class=" text-center text-lg-start">
+    <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-4 d-none d-lg-flex">
+            <img src="https://media.istockphoto.com/id/1277503713/vector/tiny-people-with-guide-instructions-or-handbooks.jpg?s=612x612&w=0&k=20&c=KRegOsh_obZunoZNoIutaFLnpu_TSzz7JdCqO48IrE4="
+                class="w-140 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+        </div>
+        <div class="col-lg-8">
+            <div class="card-body py-5 px-md-5">
+                <h1>Hey.! Welcome {{user}}</h1>
+                <br>
+                <h2>Pick your operation</h2>
+                <section>
+                    <button mat-raised-button color="accent" (click)="viewSmartMeterReadings()">View SmartMeter Readings</button>
+                </section>
+                <br>
+                <section>
+                    <button mat-raised-button color="primary" (click)="viewProvidersCurrentRates()">View Providers Current Rates</button>
+                </section>
+                <br>
+                <!-- <section>
+                    <button mat-raised-button color="warn" (click)="optForNewSmartMeter()">Opt for New SmartMeter</button>
+                </section> -->
+            </div>
+        </div>
+    </div>
+</section>

@@ -18,6 +18,8 @@ import { ViewProvidersCurrentratesComponent } from './view-providers-currentrate
 import { Provider } from './service/provider.service';
 import { TokenInterceptorService } from './service/token-interceptor-service';
 import { EnrollUserComponent } from './enroll-user/enroll-user.component';
+import { AdminPagesComponent } from './admin-pages/admin-pages.component';
+import { UserPagesComponent } from './user-pages/user-pages.component';
 // import {DialogDataExampleDialog} from './view-enable-disable-provider/view-enable-disable-provider.component';
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { EnrollUserComponent } from './enroll-user/enroll-user.component';
     LoginComponentComponent,
     ViewProvidersCurrentratesComponent,
     EnrollUserComponent,
+    AdminPagesComponent,
+    UserPagesComponent,
     // DialogDataExampleDialog
   ],
   imports: [

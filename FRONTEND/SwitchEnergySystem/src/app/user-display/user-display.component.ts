@@ -12,19 +12,20 @@ export class UserDisplayComponent implements OnInit {
   smartMeters: Array<any> = [];
   resSmartMeters: Array<responseSmartMeter> = [];
   providersArray: Array<any>=[];
-  userName = "Kavi123";
+  userName : string | null;
   smartMeterId = "";
   totalReadings: number = 0;
   amountToBePaid = "";
   providerId = "";
   userEnroll: Array<userEnrollType> = [{
-    "userName": this.userName, "providerId": "DrEvil101",
+    "userName": sessionStorage.getItem('name'), "providerId": "DrEvil101",
     "approvalStatus": "Pending",
     "totalReadings": 0.0,
     "amountToBePaid": 0.0
   }];
   constructor(private service: Provider) {
-    this.getUserWithSamrtMeters("Kavi123");
+   this.userName= this.userName=sessionStorage.getItem('name');
+    this.getUserWithSamrtMeters(this.userName);
   }
 
   ngOnInit(): void {
@@ -48,7 +49,7 @@ window.location.reload();
     })
   }
 
-  getUserWithSamrtMeters(userName: String) {
+  getUserWithSamrtMeters(userName: string|null) {
     this.service.getUserWithSamrtMeters(userName).subscribe((res) => {
       this.smartMeters = res;
 

@@ -61,7 +61,7 @@ export class Provider {
     getUserCount(userName: String): Observable<Object> {
         return this.http.get(`${this.userURL}userName/${userName}`)
     }
-    getUserWithSamrtMeters(userName: String): Observable<any> {
+    getUserWithSamrtMeters(userName: string|null): Observable<any> {
         return this.http.get(`${this.smartMeterURL}userName/${userName}`)
     }
     enrollSmartMeterForAUser(NewuserEnrollType: userEnrollType): Observable<Object> {

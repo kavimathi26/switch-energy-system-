@@ -21,6 +21,7 @@ export class LoginComponentComponent implements OnInit {
 
   setAuthRequest() {
     this.authRequest.push({ "userName": this.userName, "password": this.password});
+    sessionStorage.setItem("name", this.userName);
     console.log(this.authRequest);
     this.getAccessToken();
     this.getUserType();
@@ -34,12 +35,12 @@ export class LoginComponentComponent implements OnInit {
 
   routeToAdmin() {
     if (this.resRole == "USER") {
-      this.router.navigateByUrl('user/view');
+      this.router.navigateByUrl('user/page');
       console.log("routeToUser");
 
     }
     else if (this.resRole == "ADMIN") {
-      this.router.navigateByUrl('providers/view');
+      this.router.navigateByUrl('admin/page');
       console.log("routeToAdmin");
 
     }
