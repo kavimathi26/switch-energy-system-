@@ -18,10 +18,14 @@ export class AcceptRejectSmartmeterComponent implements OnInit {
   userName = "Kavi123"
   userDetails: Array<smartMeterType> = [];
   getUserWithSmartMetersPending() {
-    this.service.getUserWithSmartMetersPending("Kavi123").subscribe((res) => {
+    this.service.getPendingSmartMeterList().subscribe((res)=> {
       console.log(res);
-      this.userDetails = res;
+      this.userDetails=res;
     })
+    // this.service.getUserWithSmartMetersPending("Kavi123").subscribe((res) => {
+    //   console.log(res);
+    //   this.userDetails = res;
+    // })
   }
   editApprovalStatus(smartMeterId: String) {
     this.service.approveSmartMeter("accepted", smartMeterId).subscribe((res) => {

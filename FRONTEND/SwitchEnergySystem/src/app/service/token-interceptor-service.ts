@@ -11,7 +11,7 @@ export class TokenInterceptorService implements HttpInterceptor {
 
         let jwtToken: HttpRequest<any>;
 
-        if(req.url === 'http://localhost:8080/login/authenticate' || req.url === 'http://localhost:8080/user/enroll') {
+        if(req.url === 'http://localhost:8080/login/authenticate') {
             jwtToken = req.clone({
                 setHeaders: {
                     Authorization: ``

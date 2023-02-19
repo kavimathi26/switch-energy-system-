@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AcceptRejectSmartmeterComponent } from './accept-reject-smartmeter/accept-reject-smartmeter.component';
 import { EnrollProviderComponent } from './enroll-provider/enroll-provider.component';
+import { EnrollUserComponent } from './enroll-user/enroll-user.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { UserDisplayComponent } from './user-display/user-display.component';
 import { ViewEnableDisableProviderComponent } from './view-enable-disable-provider/view-enable-disable-provider.component';
@@ -15,6 +16,7 @@ const routes: Routes = [{ path: 'providers/create', component: EnrollProviderCom
 { path: 'login', component: LoginComponentComponent },
 { path: 'user/provider/view', component: ViewProvidersCurrentratesComponent },
 { path: '', component: LoginComponentComponent },
+{ path: 'user/enroll', component: EnrollUserComponent}
 ];
 
 @NgModule({

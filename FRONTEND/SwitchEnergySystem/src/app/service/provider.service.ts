@@ -8,6 +8,7 @@ import { userEnrollType } from "../user-display/user-enroll-type";
 import { TokenInterceptorService } from "./token-interceptor-service";
 import { Token } from "../view-enable-disable-provider/token.interface";
 import { userType } from "../login-component/userType";
+import { userEnrollTypeForSignup } from "../enroll-user/userEnroll";
 
 @Injectable({
     providedIn: 'root'
@@ -69,6 +70,9 @@ export class Provider {
     getUserWithSmartMetersPending(userName: String): Observable<any> {
         return this.http.get(`${this.smartMeterURL}pending/userName/${userName}`)
     }
+    getPendingSmartMeterList():Observable<any> {
+        return this.http.get(`${this.smartMeterURL}pendingSmartmeters`);
+    }
     approveSmartMeter(approvalStatus: String, smartMeterId: String): Observable<any> {
         return this.http.put(`${this.smartMeterURL}approvalstatus/${approvalStatus}/smartmeterid/${smartMeterId}`, smartMeterId);
     }
@@ -80,5 +84,8 @@ export class Provider {
     }
     getRole(UserName:string):Observable<String>  {
         return this.http.get(`${this.userURL}findRole/userName/${UserName}`, {responseType: 'text'})
+    }
+    userSignUP(newUser: Object):Observable<userEnrollTypeForSignup> {
+        return this.http.post<userEnrollTypeForSignup>("http://localhost:8080/user/enroll",newUser);
     }
 }

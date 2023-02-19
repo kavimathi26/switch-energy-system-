@@ -133,4 +133,8 @@ public class SmartMeterEnrollRepository {
         mongoTemplate.findAndModify(query1,update1,Provider.class);
     }
 
+    public List getUserWithSmartMetersPendingForAdminApproval() {
+        Query query = new Query().addCriteria(Criteria.where("approvalStatus").is("Pending"));
+        return mongoTemplate.find(query,SmartMeter.class);
+    }
 }

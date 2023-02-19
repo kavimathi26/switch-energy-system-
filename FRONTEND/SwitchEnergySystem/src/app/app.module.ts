@@ -17,6 +17,7 @@ import { LoginComponentComponent } from './login-component/login-component.compo
 import { ViewProvidersCurrentratesComponent } from './view-providers-currentrates/view-providers-currentrates.component';
 import { Provider } from './service/provider.service';
 import { TokenInterceptorService } from './service/token-interceptor-service';
+import { EnrollUserComponent } from './enroll-user/enroll-user.component';
 // import {DialogDataExampleDialog} from './view-enable-disable-provider/view-enable-disable-provider.component';
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TokenInterceptorService } from './service/token-interceptor-service';
     ViewSmartmeterListComponent,
     LoginComponentComponent,
     ViewProvidersCurrentratesComponent,
+    EnrollUserComponent,
     // DialogDataExampleDialog
   ],
   imports: [

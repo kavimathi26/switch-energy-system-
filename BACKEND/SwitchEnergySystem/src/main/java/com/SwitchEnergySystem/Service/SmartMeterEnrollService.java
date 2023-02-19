@@ -43,4 +43,8 @@ public class SmartMeterEnrollService {
     public void updateProviderId(String providerId, String providerIdToBeChanged) {
         smartMeterEnrollRepository.updateProviderId(providerId,providerIdToBeChanged);
     }
+
+    public List getUserWithSmartMetersPendingForAdminApproval() {
+        return smartMeterEnrollRepository.getUserWithSmartMetersPendingForAdminApproval();
+    }
 }

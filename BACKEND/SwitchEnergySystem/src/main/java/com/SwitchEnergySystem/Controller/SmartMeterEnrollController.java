@@ -50,6 +50,13 @@ public String enrollSmartMeter(@RequestBody SmartMeter smartMeter) {
     public List getUserWithSmartMetersPending(@PathVariable String userName) {
     return smartMeterEnrollService.getUserWithSmartMetersPending(userName);
 }
+
+@GetMapping("/pendingSmartmeters")
+@PreAuthorize("hasAuthority('ADMIN')")
+public List getUserWithSmartMetersPendingForAdminApproval() {
+    return smartMeterEnrollService.getUserWithSmartMetersPendingForAdminApproval();
+}
+
 @GetMapping("/count/providerId/{providerId}")
 @PreAuthorize("hasAuthority('ADMIN')")
     public int getCountOfSmartMeters(@PathVariable String providerId) {
