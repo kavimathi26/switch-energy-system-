@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Provider } from '../service/provider.service';
 import { responseSmartMeter } from './responeSmartMeter';
 import { userEnrollType } from './user-enroll-type';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-user-display',
   templateUrl: './user-display.component.html',
@@ -63,6 +63,15 @@ window.location.reload();
     // window.location.reload();
   }
   createSmartMeter() {
+    Swal.fire({
+      title: 'Your request will process soon!',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
     this.viewAllProviders();
     this.enrollSmartMeterForAUser();
   }

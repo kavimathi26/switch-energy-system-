@@ -1,31 +1,29 @@
 <section class=" text-center text-lg-start">
-    <div class="card mb-3">
-        <div class="row g-0 d-flex align-items-center">
-            <div class="col-lg-4 d-none d-lg-flex">
-                <img src="https://uxwing.com/wp-content/themes/uxwing/download/editing-user-action/new-registration-icon.png"
-                    class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-            </div>
-            <div class="col-lg-8">
-                <div class="card-body py-5 px-md-5">
-                    <h2>SIGNUP</h2>
-                    <form class="signupRequest">
-                        <div class="form-outline mb-4">
-                            <label class="form-label">User Name</label>
-                            <input type="text" name="userName" [(ngModel)]="userName" class="form-control" />
-                        </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label">Password</label>
-                            <input type="password" name="password" [(ngModel)]="password" class="form-control" />
-                        </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label">Role</label>
-                            <input name="role" [(ngModel)]="role" class="form-control" />
-                        </div>
-                        <button type="button" class="btn btn-primary btn-block mb-4"
-                            (click)="setSignupRequest()">Enroll</button>
+    <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-5 d-none d-lg-flex">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/user-account-sign-up-4489360-3723267.png"
+                class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+        </div>
+        <div class="col-lg-5">
+            <div class="card-body py-5 px-md-5">
+                <h2>SIGNUP</h2>
+                <form class="signupRequest">
+                    <div class="form-outline mb-4">
+                        <label class="form-label">User Name</label>
+                        <input type="text" name="userName" [(ngModel)]="userName" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" [(ngModel)]="password" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Role</label>
+                        <input name="role" [(ngModel)]="role" class="form-control" />
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block mb-4"
+                        (click)="setSignupRequest()">Enroll</button>
 
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>

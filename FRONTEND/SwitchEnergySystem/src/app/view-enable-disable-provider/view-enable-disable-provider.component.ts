@@ -45,7 +45,7 @@ export class ViewEnableDisableProviderComponent implements OnInit {
     this.service.updateVisibility(this.visibility, providerId).subscribe(response => {
       console.log(response);
     })
-    // window.location.reload();
+    window.location.reload();
   }
   viewSmartMeters(providerId: String | null) {
     this.service.viewSmartMeters(providerId).subscribe(respronse => {

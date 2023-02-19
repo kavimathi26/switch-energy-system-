@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-pages.component.css']
 })
 export class AdminPagesComponent implements OnInit {
-
+admin=sessionStorage.getItem('name');
   constructor(private router: Router) { }
 
   ngOnInit(): void {

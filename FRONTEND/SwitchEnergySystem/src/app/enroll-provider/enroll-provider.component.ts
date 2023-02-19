@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { provider } from './provider';
 import { Provider } from '../service/provider.service';
-
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-enroll-provider',
   templateUrl: './enroll-provider.component.html',
@@ -16,8 +17,12 @@ export class EnrollProviderComponent implements OnInit {
     this.setProvider();
     console.log(this.enrollProvider);
     this.sendProvider();
+    Swal.fire('Provider Enrolled').then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigateByUrl('admin/page');
+      }});
   }
-  constructor(private service: Provider) {
+  constructor(private service: Provider,private router: Router) {
 
   }
 

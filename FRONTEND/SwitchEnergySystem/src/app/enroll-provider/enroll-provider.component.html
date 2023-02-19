@@ -1,4 +1,4 @@
-<h2>Enroll New Provider</h2>
+<!-- <h2>Enroll New Provider</h2>
 <form class="enroll-provider">
     <mat-form-field class="form-field" appearence="fill">
         <mat-label>Provider ID</mat-label>
@@ -17,4 +17,36 @@
     </mat-form-field>
     <br>
     <button mat-raised-button color="primary" (click)="enroll()" routerLink="/providers/view">ENROLL</button>
-</form>
+</form> -->
+
+<section class=" text-center text-lg-start">
+    <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-5 d-none d-lg-flex">
+            <img src="https://www.pricetocompare.com/assets/static/lady-lightbulb.7ce15d6.848cce21765b8fcc9d79abcf95fc2d63.svg"
+                class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+        </div>
+        <div class="col-lg-5">
+            <div class="card-body py-5 px-md-5">
+                <h2>Enroll New Provider</h2>
+                <form class="enrollNewProvider">
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Provider ID</label>
+                        <input type="text" name="providerId" [(ngModel)]="providerId" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Provider Name</label>
+                        <input name="providerName" [(ngModel)]="providerName" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Amount Per Unit</label>
+                        <input name="amountCharged" [(ngModel)]="amountCharged" class="form-control" />
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block mb-4" (click)="enroll()">Enroll
+                        Provider</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
