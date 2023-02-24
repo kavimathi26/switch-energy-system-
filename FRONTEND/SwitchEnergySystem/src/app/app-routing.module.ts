@@ -10,6 +10,7 @@ import { UserPagesComponent } from './user-pages/user-pages.component';
 import { ViewEnableDisableProviderComponent } from './view-enable-disable-provider/view-enable-disable-provider.component';
 import { ViewProvidersCurrentratesComponent } from './view-providers-currentrates/view-providers-currentrates.component';
 import { ViewSmartmeterListComponent } from './view-smartmeter-list/view-smartmeter-list.component';
+
 const routes: Routes = [{ path: 'providers/create', component: EnrollProviderComponent },
 { path: 'providers/view', component: ViewEnableDisableProviderComponent },
 { path: 'user/view', component: UserDisplayComponent },
@@ -27,4 +28,5 @@ const routes: Routes = [{ path: 'providers/create', component: EnrollProviderCom
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

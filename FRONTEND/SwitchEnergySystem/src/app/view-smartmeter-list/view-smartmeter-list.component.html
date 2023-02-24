@@ -2,9 +2,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 <div class="container">
     <h2 class="center">SMARTMETERS LIST</h2>
-    <!-- <div class="col-auto my-1 right">
-        <button type="button" class="btn btn-secondary" routerLink="providers/view" id="back">BACK</button>
-    </div> -->
     <br>
     <br>
     <div>
@@ -17,7 +14,6 @@
             <tbody>
                 <tr *ngFor="let smartmeter of smartMeters">
                     <td>{{ smartmeter.smartmeterId }}</td>
-
                 </tr>
             </tbody>
         </table>

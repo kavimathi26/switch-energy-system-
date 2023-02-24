@@ -6,16 +6,20 @@ import { Router } from '@angular/router';
   templateUrl: './user-pages.component.html',
   styleUrls: ['./user-pages.component.css']
 })
+
 export class UserPagesComponent implements OnInit {
-user=sessionStorage.getItem('name');
+
+  user = sessionStorage.getItem('name');
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
+
   viewSmartMeterReadings() {
     this.router.navigateByUrl('user/view');
   }
+
   viewProvidersCurrentRates() {
-    this.router.navigateByUrl('user/provider/view');  
+    this.router.navigateByUrl('user/provider/view');
   }
+
 }

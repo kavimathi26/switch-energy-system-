@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./enroll-provider.component.css']
 })
 export class EnrollProviderComponent implements OnInit {
+
   providerId: String = "";
   providerName: String = "";
   amountCharged: Number = 0;
   enrollProvider: Array<provider> = [];
+
   enroll() {
     this.setProvider();
     console.log(this.enrollProvider);
@@ -20,31 +22,22 @@ export class EnrollProviderComponent implements OnInit {
     Swal.fire('Provider Enrolled').then((result) => {
       if (result.isConfirmed) {
         this.router.navigateByUrl('admin/page');
-      }});
-  }
-  constructor(private service: Provider,private router: Router) {
-
+      }
+    });
   }
 
-  ngOnInit(): void {
-  }
+  constructor(private service: Provider, private router: Router) { }
 
-  authRequest: any = {
-    "userName": "Kavi123",
-    "password": "kavimathi",
-    "role": "USER"
-  };
-
-
-
+  ngOnInit(): void { }
 
   setProvider() {
     this.enrollProvider.push({ "providerId": this.providerId, "providerName": this.providerName, "countOfSmartMeters": 0, "amountChargedPerUnit": this.amountCharged, visibility: "Enable" });
   }
+
   sendProvider() {
     this.service.setProvider(this.enrollProvider[0]).subscribe((res) => {
       console.log(res);
-
     })
   }
+
 }

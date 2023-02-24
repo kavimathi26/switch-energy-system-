@@ -6,22 +6,30 @@ import { Router } from '@angular/router';
   templateUrl: './admin-pages.component.html',
   styleUrls: ['./admin-pages.component.css']
 })
+
 export class AdminPagesComponent implements OnInit {
-admin=sessionStorage.getItem('name');
+
+  admin = sessionStorage.getItem('name');
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
   viewProvidersPage() {
     this.router.navigateByUrl('providers/view');
   }
+
   approveSmartMetersPage() {
-    this.router.navigateByUrl('approval-status/smartmeters');  
+    this.router.navigateByUrl('approval-status/smartmeters');
   }
+
   enrollProvidersPage() {
-    this.router.navigateByUrl('providers/create');  
+    this.router.navigateByUrl('providers/create');
   }
+
   enrollUserPage() {
     this.router.navigateByUrl('user/enroll');
   }
+  
 }

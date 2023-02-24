@@ -8,16 +8,16 @@ import { Provider } from '../service/provider.service';
 })
 
 export class ViewSmartmeterListComponent implements OnInit {
-smartMeters:Array<any> = [];
-  constructor(private service:Provider) { }
-  ngOnInit(): void {
-  }
+
+  smartMeters: Array<any> = [];
+
+  constructor(private service: Provider) { }
+  ngOnInit(): void {  }
+
   viewSmartMeters(providerId: String | null) {
     this.service.viewSmartMeters(providerId).subscribe(respronse => {
-      console.log(respronse);
-      this.smartMeters=respronse;
-      console.log(this.smartMeters);
-      
+      this.smartMeters = respronse;
     })
   }
+  
 }

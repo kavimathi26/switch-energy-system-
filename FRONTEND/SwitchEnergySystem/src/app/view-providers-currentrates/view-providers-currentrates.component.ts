@@ -7,16 +7,17 @@ import { Provider } from '../service/provider.service';
   templateUrl: './view-providers-currentrates.component.html',
   styleUrls: ['./view-providers-currentrates.component.css']
 })
+
 export class ViewProvidersCurrentratesComponent implements OnInit {
-providerArray:Array<provider>=[];
-  constructor(private service:Provider) { }
+  
+  providerArray: Array<provider> = [];
+
+  constructor(private service: Provider) { }
 
   ngOnInit(): void {
-    this.service.ViewAllProviders().subscribe((res)=> {
+    this.service.ViewAllProviders().subscribe((res) => {
       console.log(res);
-      this.providerArray=res;
-      console.log(this.providerArray);
-      
+      this.providerArray = res;
     })
   }
 
