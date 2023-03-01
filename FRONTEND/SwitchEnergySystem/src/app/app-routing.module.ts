@@ -21,7 +21,8 @@ const routes: Routes = [{ path: 'providers/create', component: EnrollProviderCom
 { path: '', component: LoginComponentComponent },
 { path: 'user/enroll', component: EnrollUserComponent},
 { path: 'admin/page', component:AdminPagesComponent},
-{ path: 'user/page', component:UserPagesComponent}
+{ path: 'user/page', component:UserPagesComponent},
+{ path: '**', redirectTo: '' }
 ];
 
 @NgModule({
