@@ -40,4 +40,8 @@ export class EnrollProviderComponent implements OnInit {
     })
   }
 
+  goBack() {
+    this.router.navigateByUrl('admin/page');
+  }
+
 }

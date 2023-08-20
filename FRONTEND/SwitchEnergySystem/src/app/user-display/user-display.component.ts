@@ -3,6 +3,7 @@ import { Provider } from '../service/provider.service';
 import { responseSmartMeter } from './responeSmartMeter';
 import { userEnrollType } from './user-enroll-type';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-display',
   templateUrl: './user-display.component.html',
@@ -28,7 +29,7 @@ export class UserDisplayComponent implements OnInit {
     "amountToBePaid": 0.0
   }];
 
-  constructor(private service: Provider) {
+  constructor(private router: Router,private service: Provider) {
     this.userName = this.userName = sessionStorage.getItem('name');
     this.getUserWithSamrtMeters(this.userName);
   }
@@ -79,5 +80,7 @@ export class UserDisplayComponent implements OnInit {
     this.enrollSmartMeterForAUser();
   }
 
-
+  goBackForUser() {
+    this.router.navigateByUrl('user/page');
+  }
 }

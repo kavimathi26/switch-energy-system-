@@ -1,0 +1,18 @@
+.img-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background-color: #767d84;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.img-button img {
+    width: 30px;
+    height: 30px;
+    margin-right: 3px;
+}

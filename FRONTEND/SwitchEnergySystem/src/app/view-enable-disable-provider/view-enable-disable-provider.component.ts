@@ -62,6 +62,9 @@ export class ViewEnableDisableProviderComponent implements OnInit {
     tempRouter.navigate(['providers/view']);
   }
 
+  goBack() {
+    this.router.navigateByUrl('admin/page');
+  }
   ngOnInit(): void {  }
 
   p: number = 1;

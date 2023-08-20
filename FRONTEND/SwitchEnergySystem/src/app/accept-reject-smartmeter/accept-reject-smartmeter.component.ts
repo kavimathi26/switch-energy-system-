@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Provider } from '../service/provider.service';
 import { smartMeterType } from './smartMeterType';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accept-reject-smartmeter',
@@ -9,7 +10,7 @@ import { smartMeterType } from './smartMeterType';
 })
 export class AcceptRejectSmartmeterComponent implements OnInit {
 
-  constructor(private service: Provider) { }
+  constructor(private router: Router,private service: Provider) { }
 
   ngOnInit(): void {
     this.getUserWithSmartMetersPending();
@@ -36,6 +37,10 @@ export class AcceptRejectSmartmeterComponent implements OnInit {
       console.log(res);
       window.location.reload();
     })
+  }
+
+  goBack() {
+    this.router.navigateByUrl('admin/page');
   }
 
 }

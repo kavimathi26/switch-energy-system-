@@ -22,4 +22,7 @@ export class UserPagesComponent implements OnInit {
     this.router.navigateByUrl('user/provider/view');
   }
 
+  logOutUser() {
+    this.router.navigateByUrl('login');
+  }
 }

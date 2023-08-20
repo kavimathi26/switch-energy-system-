@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Provider } from '../service/provider.service';
 import { userEnrollTypeForSignup } from './userEnroll';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enroll-user',
@@ -15,7 +16,7 @@ export class EnrollUserComponent implements OnInit {
   role: string = '';
   signupRequest: Array<userEnrollTypeForSignup> = [];
 
-  constructor(private service: Provider) { }
+  constructor(private router:Router,private service: Provider) { }
 
   ngOnInit(): void { }
 
@@ -23,6 +24,10 @@ export class EnrollUserComponent implements OnInit {
     this.signupRequest.push({ "userName": this.userName, "password": this.password, "role": this.role });
     this.service.userSignUP(this.signupRequest[this.signupRequest.length - 1]).subscribe((res) => { console.log(res); }
     )
+  }
+
+  goBack() {
+    this.router.navigateByUrl('admin/page');
   }
 
 }

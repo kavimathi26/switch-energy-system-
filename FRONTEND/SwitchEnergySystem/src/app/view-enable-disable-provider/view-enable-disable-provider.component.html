@@ -1,5 +1,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 <div class="container">
+    <div>
+        <button class="back-button" (click)="goBack()"><img src="assets/back-button.png"></button>
+    </div>
     <h2 class="center">PROVIDER DETAILS</h2>
     <div class="col-auto my-1 right">
         <button type="button" class="btn btn-secondary" routerLink="/providers/create" id="create">CREATE</button>
@@ -23,12 +26,20 @@
                     <td>{{ provider.providerName }}</td>
                     <td>{{ provider.countOfSmartMeters }}</td>
                     <td>{{ provider.amountChargedPerUnit }}</td>
-
-                    <td>
-                        <button type="button" class="btn btn-info"
-                            (click)="editVisibility(provider.visibility,provider.providerId)">{{provider.visibility}}</button>
-                    </td>
-
+                    <button *ngIf="provider.visibility === 'Enable'; else disableButton"
+                    [class]="provider.visibility === 'Enable' ? 'btn btn-info' : 'btn btn-warning'"
+                    type="button"
+                    (click)="editVisibility(provider.visibility, provider.providerId)">
+                {{ provider.visibility }}
+            </button>
+            <ng-template #disableButton>
+                <button class="btn btn-warning"
+                        type="button"
+                        (click)="editVisibility(provider.visibility, provider.providerId)">
+                    {{ provider.visibility }}
+                </button>
+            </ng-template>
+            
                 </tr>
             </tbody>
         </table>

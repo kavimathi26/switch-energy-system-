@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { provider } from '../enroll-provider/provider';
 import { Provider } from '../service/provider.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-providers-currentrates',
@@ -12,7 +13,7 @@ export class ViewProvidersCurrentratesComponent implements OnInit {
   
   providerArray: Array<provider> = [];
 
-  constructor(private service: Provider) { }
+  constructor(private router: Router,private service: Provider) { }
 
   ngOnInit(): void {
     this.service.ViewAllProviders().subscribe((res) => {
@@ -21,4 +22,7 @@ export class ViewProvidersCurrentratesComponent implements OnInit {
     })
   }
 
+  goBackForUser() {
+    this.router.navigateByUrl('user/page');
+  }
 }

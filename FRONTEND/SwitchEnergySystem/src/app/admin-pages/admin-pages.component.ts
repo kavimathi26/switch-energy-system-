@@ -32,4 +32,7 @@ export class AdminPagesComponent implements OnInit {
     this.router.navigateByUrl('user/enroll');
   }
   
+  logOutUser() {
+    this.router.navigateByUrl('login')
+  }
 }
